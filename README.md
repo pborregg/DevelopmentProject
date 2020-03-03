@@ -18,6 +18,7 @@ You are to develop a Single Page Application, using your favorite front-end fram
 		 - Vitality
 			 - Calculated as 3 + Strength
 			 - When characters take damage, they lose 1 vitality. Allow players to mark how many times they have taken damage and have this stat update accordingly
+			 - Damage is persistant
 		 - Evasion: Calculated at 10 + Dexterity
 		 - Armor: Calculated as Evasion
 		 - Alacrity: Calcuated as Dexterity + Mind
