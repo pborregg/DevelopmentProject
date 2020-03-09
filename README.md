@@ -1,6 +1,6 @@
 # TRPG Project
 ## Overview
-The purpose of this project is to show how you develop in a 2 hour period. You are not expected to finish this project, nor should you be able to within two hours.
+The purpose of this project is to show how you develop. Do not focus on being feature complete, but on well structured and robust code execution and data manipulation.
 
 Acceptible frameworks that can be used for this project
 - Pure HTML/CSS/JS (No framework)
@@ -10,7 +10,7 @@ Acceptible frameworks that can be used for this project
 ### Setting
 A client has come to you requesting a webpage where they and their players can manage their character sheets for the obscure Tabletop RPG 'Blood and Bone'.
 
-You are to develop a Single Page Application, according to the specifications listed below. You can take 1 hour to plan out your project, if desired, and 2 - 3 hours to develop. Once you have spent 2 to 3 hours on development, please email your what you have to sbarney@xcite-interactive.com.
+You are to develop a Single Page Application, according to the specifications listed below. You can take up to 4 hours to work on this project. Please email your what you have to sbarney@xcite-interactive.com, along with the time you took to develop and instructions on how to run it.
 
 ## Specifications
 
