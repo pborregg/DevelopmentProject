@@ -5,7 +5,7 @@ The purpose of this project is to show how you develop in a 2 hour period. You a
 ### Setting
 A client has come to you requesting a webpage where they and their players can manage their character sheets for the obscure Tabletop RPG 'Blood and Bone'.
 
-You are to develop a Single Page Application, using your favorite front-end framework, according to the specifications listed below. You can take 1 hour to plan out your project, if desired, and 2 hours to develop. Once you have spent 2 hours on development, please email your what you have to sbarney@xcite-interactive.com, along with instructions on how to build and run it. It is preferred that all submissions be able to be built and run using Node's npm or yarn tools.
+You are to develop a Single Page Application, using pure html/css and javascript, according to the specifications listed below. You can take 1 hour to plan out your project, if desired, and 2 - 3 hours to develop. Once you have spent 2 to 3 hours on development, please email your what you have to sbarney@xcite-interactive.com.
 
 ## Specifications
 
