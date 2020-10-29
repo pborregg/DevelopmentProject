@@ -14,5 +14,11 @@
     "Xcite"
   ],
   "author": "Peter Borreggine",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@angular/cli": "^11.0.0-rc.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.5"
+  }
 }
