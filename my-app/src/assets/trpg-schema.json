@@ -2,12 +2,11 @@
     "playername": "Peter Borreggine",
     "character": {
         "name": "Archangel Orphieal",
-        "traits": [
-            {
-                "name": "",
-                "requirement": ""
-            }
-        ],
+        "newname": "",
+        "traits": [{
+            "name": "",
+            "requirement": ""
+        }],
         "baseattribs": {
             "strength": {
                 "value": 0,
