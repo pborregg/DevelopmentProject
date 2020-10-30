@@ -32,6 +32,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.setTitle(this.title);
     this.jsonPath = environment.JSONOBJECTPATH.trpgdata;
+    if (!this.newCharName) {
+      if (localStorage.getItem('newCharName')) {
+        this.newCharName = localStorage.getItem('newCharName');
+      }
+    }
 
     this.httpService.get(this.jsonPath).subscribe(
       data => {
@@ -55,39 +60,16 @@ export class AppComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  public onSubmit(event): void {
+  public changeCharName(event): void {
     console.log('New Character Name: ' + event.target.value);
     this.newCharName = event.target.value;
     this.prepareData(this.newCharName);
   }
 
   public prepareData(newcharname: string): void {
-
-    console.log('this.FilterData' + JSON.stringify(this.FilterData));
-    this.loading = true;
-    this.trpgServices.post(
-      this.UrlsService.setAPIURl(APIURL.Surveillance_OatsException_Summary),
-      this.FilterData)
-      .map((response: Response) => {
-        this.isLoadingResults = false;
-        this.isRateLimitReached = false;
-        return response.json();
-      })
-      .subscribe(Element => {
-        this.dataset = Element;
-      },
-        (err: HttpErrorResponse) => {
-          this.isLoadingResults = false;
-          this.isRateLimitReached = true;
-        });
-    this.loading = false;
-
-
+    console.log('this.FilterData' + JSON.stringify(newcharname));
+    const myNewCharName = this.trpgServices.post(this.jsonPath, newcharname);
+    console.log('MyNewCharName Set: ', myNewCharName);
   }
-  // tslint:disable-next-line: typedef
-  FilterData(arg0: any, FilterData: any) {
-    throw new Error('Method not implemented.');
-  }
-
 
 }

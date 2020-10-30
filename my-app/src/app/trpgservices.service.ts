@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { RequestOptions } from 'http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { resolve } from 'dns';
 
 @Injectable({
   providedIn: 'root'
@@ -36,14 +37,25 @@ export class TrpgservicesService {
     // return options;
   }
 
-  public post(url: string, requestData: any): Observable<any> {
+  public post(url: string, requestData: any): Promise<any> {
     const options = this.attachAuthorization();
     // console.log(localStorage.getItem('token'));
-    const Data = { data: requestData }
-    console.log('Data ' + JSON.stringify(Data));
-    return this.http.post(url, JSON.stringify(Data), options);
+    const data = { data: requestData };
+    console.log('url: ', url);
+    const finalData = JSON.stringify(data);
+    console.log(localStorage.setItem('newCharName', finalData));
 
-
+    // tslint:disable-next-line: no-shadowed-variable
+    return new Promise((resolve, reject) => {
+      return this.http.post<object>(url, finalData).subscribe((Response: any) => {
+        console.log('response: ', Response);
+        resolve(Response);
+      }, (error: any) => {
+        console.log('Error: ', error);
+        reject(error);
+      }
+      );
+    });
   }
 
 }

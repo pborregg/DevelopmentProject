@@ -61,19 +61,17 @@
             </button>
         </div>
         <div class="modal-body">
-            <form id="newCharForm" name="newCharForm">
-                <label for="newcharname">Enter a new Name for your Character</label><br>
-                <input id="newcharname" (change)="onSubmit($event)" type="text" title="Enter a new name for your Character" ng-blur="updateCharName()" />
-                <div class="clearfix">&nbsp;</div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="reset" class="btn btn-primary btn-sm">Clear</button>
-                    </div>
+            <label for="newcharname">Enter a new Name for your Character</label><br>
+            <input id="newcharname" (change)="changeCharName($event)" type="text" title="Enter a new name for your Character" ng-blur="updateCharName()" />
+            <div class="clearfix">&nbsp;</div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                 </div>
-            </form>
+                <div class="col-md-6">
+                    <button type="reset" class="btn btn-primary btn-sm">Clear</button>
+                </div>
+            </div>
         </div>
     </ng-template>
 
