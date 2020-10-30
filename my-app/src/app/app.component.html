@@ -29,7 +29,7 @@
             </g>
         </svg>
 
-        <span>{{ title }} app is running!</span>
+        <span>{{ title}} app is running!</span>
 
         <svg id="rocket-smoke" alt="Rocket Ship Smoke" xmlns="http://www.w3.org/2000/svg" width="516.119" height="1083.632" viewBox="0 0 516.119 1083.632">
             <path id="Path_40" data-name="Path 40" d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z" transform="translate(-147.025 -140.939)" fill="#f5f5f5"/>
@@ -38,9 +38,12 @@
     </div>
 
     <!-- Resources -->
+    <div class="clearfix">&nbsp;</div>
     <h2>User Logged in</h2>
-    <p>Welcome {{userName}}</p>
-    <p>Playing as {{charName}}</p>
+    <p class="welcomeplayingas">Welcome <strong><span id="username" [innerHtml]="userName"></span></strong></p>
+    <p class="welcomeplayingas">Playing as <strong><span id="charname" [innerHtml]="charName"></span></strong></p>
+    <div class="clearfix">&nbsp;</div>
+    <button type="button" class="btn btn-primary btn-lg" (click)="openModal(template)">Change</button>
 
 
     <div class="card-container">
@@ -50,9 +53,27 @@
 
     <!-- Next Steps -->
     <h2>Next Steps</h2>
-    <p>You can modify your character and its attributes</p>
+    <p class="nextstepsinfo">You can modify your character and its attributes</p>
 
-
+    <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Modal</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="newCharForm" name="newCharForm">
+                <label for="newcharname">Enter a new Name for your Character</label><br>
+                    <input id="newcharname" type="text" title="Enter a new name for your Character" ng-blur="updateCharName()" />
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <div>&nbsp;</div>
+                    <button type="reset" class="btn btn-primary btn-sm">Clear</button>
+            </form>
+        </div>
+    </ng-template>
 
 </div>
 <router-outlet></router-outlet>
+
+

@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 
 @Component({
-  selector: 'my-app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'my-app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
 
@@ -13,10 +14,12 @@ export class AppComponent implements OnInit {
     public userName: string;
     public charName: string;
     public trpgSchema: string[];
+    public modalRef: BsModalRef;
 
     constructor(
         private titleService: Title,
-        private httpService: HttpClient
+        private httpService: HttpClient,
+        private modalService: BsModalService
     ) {}
 
     ngOnInit() {
@@ -39,6 +42,9 @@ export class AppComponent implements OnInit {
         this.titleService.setTitle(newTitle);
     }
 
+    openModal(template: TemplateRef<any>) {
+        this.modalRef = this.modalService.show(template);
+    }
 
 
 }
