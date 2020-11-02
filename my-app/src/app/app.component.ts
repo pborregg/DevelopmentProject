@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { environment } from '../environments/environment';
+import { CharAttributeService } from './char-attribute.service';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'my-app-root',
@@ -21,12 +23,30 @@ export class AppComponent implements OnInit, AfterViewInit {
   public loading: boolean;
   public jsonPath: string;
 
+  // Combat attribs
+  public vitality: number;
+  public evasion: number;
+  public armor: number;
+  public alacrity: number;
+  public tenacity: number;
+  public power: number;
+  public damageValue: any;
+  public combatValue: number;
+
   constructor(
     private titleService: Title,
     private httpService: HttpClient,
+    private charAttributeService: CharAttributeService,
     private modalService: BsModalService // ,
     // private trpgServices: TrpgservicesService
-  ) { }
+  ) {
+    this.vitality = 0;
+    this.evasion = 0;
+    this.armor = 0;
+    this.alacrity = 0;
+    this.tenacity = 0;
+    this.power = 0;
+  }
 
   // tslint:disable-next-line: typedef
   ngOnInit() {
@@ -49,11 +69,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Error: ', err.message);
       }
     );
-    document.getElementById('charname').addEventListener('submit', this.onsubmit);
-    document.getElementById('btnSubmit').addEventListener('click', (e: Event) => {
-      e.preventDefault();
-    });
-
   }
 
   ngAfterViewInit(): void {
@@ -65,6 +80,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       if (elem) {
         elem.addEventListener('blur', () => {
           self.newCharName = elem.nodeValue;
+        });
+      }
+      const btnSubmit = document.getElementById('btnSubmit');
+      document.getElementById('charname').addEventListener('submit', this.onsubmit);
+      if (btnSubmit !== null) {
+        document.getElementById('btnSubmit').addEventListener('click', (e: Event) => {
+          e.preventDefault();
         });
       }
     }, 3000);
@@ -102,6 +124,40 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.modalRef.hide();
   }
 
+  public calcCharComputedAttribs(e: any): void {
+    let retCombatAttrVal: number;
+    console.log('Event TARGET: ', e);
+    console.log('Event Char Attrib incoming for: ' + e.target.name + '    ' + e.target.value);
+    retCombatAttrVal = this.charAttributeService.attributeServiceNode(e.target.name, e.target.value);
+    this.combatValue = retCombatAttrVal;
+    if (e.target.name === 'strength') {
+      this.checkDamageValue();
+      if (this.damageValue !== 0) {
+        this.vitality = retCombatAttrVal - this.damageValue;
+        if (this.damageValue > retCombatAttrVal) {
+          this.displayDeathNotice(`You're dying, man!`);
+        }
+      } else {
+        this.vitality = retCombatAttrVal;
+      }
+    }
+  }
 
+  public setDamage(e: any): void {
+    this.damageValue = e.target.value;
+    this.checkDamageValue();
+    if (this.damageValue > this.combatValue) {
+      this.displayDeathNotice(`You're going really die soon!`);
+    }
+  }
 
+  public displayDeathNotice(msg: string): void {
+    window.alert(msg);
+  }
+
+  public checkDamageValue(): void {
+    if (this.damageValue === undefined) {
+      this.damageValue = 0;
+    }
+  }
 }
