@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
 @Component({
   selector: 'my-app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './app-component-custom.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
 

@@ -38,8 +38,8 @@
     <!-- Resources -->
     <div class="clearfix">&nbsp;</div>
     <h2>User Logged in</h2>
-    <p class="welcomeplayingas">Welcome <strong><span id="username" [innerHtml]="userName"></span></strong></p>
-    <p class="welcomeplayingas">Playing as <strong><span id="charname" [innerHtml]="charName"></span></strong></p>
+    <p class="welcomeplayingas">Welcome <strong><span id="username" [innerHTML]="userName"></span></strong></p>
+    <p class="welcomeplayingas">Playing as <strong><span id="charname" [innerHTML]="charName"></span></strong></p>
     <div class="clearfix">&nbsp;</div>
     <button type="button" class="btn btn-primary btn-lg" (click)="openModal(template)">Change</button>
 
@@ -52,6 +52,40 @@
     <!-- Next Steps -->
     <h2>Next Steps</h2>
     <p class="nextstepsinfo">You can modify your character and its attributes</p>
+    <div class="clearfix">&nbsp;</div>
+    <div class="container attributes">
+        <form id="charattribs" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="characterbaseattrs">
+                        <h4>Character Base Attributes</h4>
+                        <ul>
+                            <li>Strength<input #strength class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Dexterity&nbsp;<input #dexterity class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Mind&nbsp;<input #mind class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Presence&nbsp;<input #presence class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="charactercombatattrs">
+                        <h4>Character Combat Attributes</h4>
+                        <ul>
+                            <li>Vitality&nbsp;</li>
+                            <li>Evasion&nbsp;</li>
+                            <li>Armor&nbsp;</li>
+                            <li>Alacrity&nbsp;</li>
+                            <li>Tenacity&nbsp;</li>
+                            <li>Power&nbsp;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
 
 
     <ng-template #template>
@@ -68,15 +102,14 @@
                 <div class="clearfix">&nbsp;</div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        <button id="btnSubmit" type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </div>
                     <div class="col-md-6">
-                        <button type="reset" class="btn btn-primary btn-sm">Clear</button>
+                        <button id="btnReset" type="reset" class="btn btn-primary btn-sm">Clear</button>
                     </div>
                 </div>
             </form>
         </div>
     </ng-template>
 
-</div>
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
