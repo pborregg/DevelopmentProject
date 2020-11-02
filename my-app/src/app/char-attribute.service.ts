@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BrowserStack } from 'protractor/built/driverProviders';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,14 @@ export class CharAttributeService {
         break;
       default:
         break;
+      case 'dexterity':
+        attribValue = attribnbr;
+        break;
+      case 'mind':
+        attribValue = attribnbr;
+        break;
+      case 'presence':
+        attribValue = attribnbr;
     }
     return attribValue;
   }

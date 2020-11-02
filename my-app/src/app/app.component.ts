@@ -32,6 +32,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   public power: number;
   public damageValue: any;
   public combatValue: number;
+  public dexterity: any;
+  public mind: any;
+  public presence: number;
 
   constructor(
     private titleService: Title,
@@ -128,9 +131,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     let retCombatAttrVal: number;
     console.log('Event TARGET: ', e);
     console.log('Event Char Attrib incoming for: ' + e.target.name + '    ' + e.target.value);
+
     retCombatAttrVal = this.charAttributeService.attributeServiceNode(e.target.name, e.target.value);
-    this.combatValue = retCombatAttrVal;
+
     if (e.target.name === 'strength') {
+      this.combatValue = retCombatAttrVal;
       this.checkDamageValue();
       if (this.damageValue !== 0) {
         this.vitality = retCombatAttrVal - this.damageValue;
@@ -140,6 +145,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       } else {
         this.vitality = retCombatAttrVal;
       }
+    }
+    if (e.target.name === 'dexterity') {
+      this.dexterity = retCombatAttrVal;
+      this.evasion = retCombatAttrVal + 10;
+    }
+    if (e.target.name === 'armor') {
+      this.armor = retCombatAttrVal + this.evasion;
+    }
+    if (e.target.name === 'alacrity') {
+      this.alacrity = this.dexterity + this.mind;
+    }
+    if (e.target.name === 'tenacity') {
+      this.tenacity = 1 + this.presence;
     }
   }
 
