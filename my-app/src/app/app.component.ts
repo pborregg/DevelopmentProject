@@ -1,5 +1,5 @@
 import { TrpgservicesService } from './trpgservices.service';
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   public title = 'TRPG Testing App';
   public userName: string;
@@ -49,6 +49,23 @@ export class AppComponent implements OnInit {
         console.log('Error: ', err.message);
       }
     );
+
+
+  }
+
+  ngAfterViewInit(): void {
+    // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    // Add 'implements AfterViewInit' to the class.
+    const self = this;
+    const elem = document.getElementById('newcharname');
+    setTimeout(() => {
+      if (elem) {
+        elem.addEventListener('blur', () => {
+          self.newCharName = elem.nodeValue;
+        });
+      }
+    }, 3000);
+
   }
 
   public setTitle(newTitle: string): void {
@@ -71,5 +88,11 @@ export class AppComponent implements OnInit {
     const myNewCharName = this.trpgServices.post(this.jsonPath, newcharname);
     console.log('MyNewCharName Set: ', myNewCharName);
   }
+
+  public onSubmit(e: Event): void {
+    e.preventDefault();
+  }
+
+
 
 }
