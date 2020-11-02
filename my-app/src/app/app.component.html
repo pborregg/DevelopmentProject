@@ -53,6 +53,7 @@
     <h2>Next Steps</h2>
     <p class="nextstepsinfo">You can modify your character and its attributes</p>
 
+
     <ng-template #template>
         <div class="modal-header">
             <h4 class="modal-title pull-left">Change Your Character's Name</h4>
@@ -61,16 +62,16 @@
             </button>
         </div>
         <div class="modal-body">
-            <form novalidate>
+            <form id="charname" novalidate>
                 <label for="newcharname">Enter a new Name for your Character</label><br>
-                <input id="newcharname" type="text" title="Enter a new name for your Character" ng-blur="updateCharName()" />
+                <input id="newcharname" type="text" title="Enter a new name for your Character" (blur)="changeCharName()" />
                 <div class="clearfix">&nbsp;</div>
                 <div class="row">
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                     </div>
                     <div class="col-md-6">
-                        <button type="reset" class="btn btn-primary btn-sm" onsubmit="onSubmit($event)">Clear</button>
+                        <button type="reset" class="btn btn-primary btn-sm">Clear</button>
                     </div>
                 </div>
             </form>

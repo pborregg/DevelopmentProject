@@ -1,4 +1,4 @@
-import { TrpgservicesService } from './trpgservices.service';
+// import { TrpgservicesService } from './trpgservices.service';
 import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public userName: string;
   public charName: string;
   public newCharName: string;
-  public trpgSchema: any[];
+  public trpgSchema: string[];
   public modalRef: BsModalRef;
   public loading: boolean;
   public jsonPath: string;
@@ -24,8 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private titleService: Title,
     private httpService: HttpClient,
-    private modalService: BsModalService,
-    private trpgServices: TrpgservicesService
+    private modalService: BsModalService // ,
+    // private trpgServices: TrpgservicesService
   ) { }
 
   // tslint:disable-next-line: typedef
@@ -49,7 +49,10 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Error: ', err.message);
       }
     );
-
+    document.getElementById('charname').addEventListener('submit', this.onsubmit);
+    document.getElementById('btnSubmit').addEventListener('click', (e: Event) => {
+      e.preventDefault();
+    });
 
   }
 
@@ -78,19 +81,25 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   public changeCharName(event): void {
-    console.log('New Character Name: ' + event.target.value);
-    this.newCharName = event.target.value;
-    this.prepareData(this.newCharName);
+    const msg = (document.getElementById('newcharname') as HTMLInputElement).value;
+    console.log('New Character Name: ' + msg);
+    this.newCharName = msg;
+    this.prepareData(msg);
   }
 
   public prepareData(newcharname: string): void {
     console.log('this.FilterData' + JSON.stringify(newcharname));
-    const myNewCharName = this.trpgServices.post(this.jsonPath, newcharname);
+    // const myNewCharName = this.trpgServices.post(this.jsonPath, newcharname);
+    const myNewCharName = newcharname;
     console.log('MyNewCharName Set: ', myNewCharName);
+    localStorage.setItem('newCharName', newcharname);
+    this.charName = newcharname;
+    this.onsubmit();
   }
 
-  public onSubmit(e: Event): void {
-    e.preventDefault();
+  public onsubmit(): void {
+    console.log('Event onSubmit: ', this.newCharName);
+    this.modalRef.hide();
   }
 
 
