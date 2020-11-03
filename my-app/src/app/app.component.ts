@@ -38,6 +38,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   public damageValue: any;
   public combatValue: number;
 
+  // Skills
+  public untrained: number;
+  public novice: number;
+  public apprentice: number;
+  public adept: number;
+  public expert: number;
+  public master: number;
+
+  public damage: number;
+
   constructor(
     private titleService: Title,
     private httpService: HttpClient,
@@ -51,6 +61,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.alacrity = 0;
     this.tenacity = 0;
     this.power = 0;
+
+    // Skill Ranking
+    this.untrained = 0;
+    this.novice = 1;
+    this.apprentice = 2;
+    this.adept = 3;
+    this.expert = 4;
+    this.master = 5;
   }
 
   // tslint:disable-next-line: typedef
@@ -74,6 +92,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Error: ', err.message);
       }
     );
+
+    this.strength = 0;
+    this.dexterity = 0;
+    this.mind = 0;
+    this.presence = 0;
+    this.damage = 0;
   }
 
   ngAfterViewInit(): void {
@@ -159,9 +183,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (e.target.name === 'mind') {
       this.alacrity = +this.dexterity + +this.mind;
     }
-    if (e.target.name === 'tenacity') {
+    if (e.target.name === 'presence') {
       this.tenacity = +1 + +this.presence;
     }
+
   }
 
   public setDamage(e: any): void {

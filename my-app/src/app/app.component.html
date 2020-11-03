@@ -53,44 +53,99 @@
     <h2>Next Steps</h2>
     <p class="nextstepsinfo">You can modify your character and its attributes</p>
     <div class="clearfix">&nbsp;</div>
+
+
     <div class="container attributes">
-        <form id="charattribs" novalidate>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="characterbaseattrs">
-                        <h4>Character Base Attributes</h4>
-                        <ul>
-                            <li>Strength<input #strength name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="1000" /></li>
-                            <li>Dexterity&nbsp;<input #dexterity name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                            <li>Mind&nbsp;<input #mind name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                            <li>Presence&nbsp;<input #presence name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                        </ul>
-                        <h4>Damage You've Taken</h4>
-                        <ul>
-                            <li>Damage&nbsp;<input #presence name="presence" ngModel="presence" (blur)="setDamage($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="99" /></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="charactercombatattrs">
-                        <h4>Character Combat Attributes</h4>
-                        <ul>
-                            <li>Vitality:&nbsp;<span class="float-right"><strong>{{vitality}}</strong></span></li>
-                            <li>Evasion:&nbsp;<span class="float-right"><strong>{{evasion}}</strong></span></li>
-                            <li>Armor:&nbsp;<span class="float-right"><strong>{{armor}}</strong></span></li>
-                            <li>Alacrity:&nbsp;<span class="float-right"><strong>{{alacrity}}</strong></span></li>
-                            <li>Tenacity:&nbsp;<span class="float-right"><strong>{{tenacity}}</strong></span></li>
-                            <li>Power:&nbsp;<span class="float-right"><strong>{{power}}</strong></span></li>
-                        </ul>
-                    </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="characterbaseattrs">
+                    <h4>Character Base Attributes</h4>
+                    <ul>
+                        <li>Strength<input name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="1000" /></li>
+                        <li>Dexterity&nbsp;<input name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                        <li>Mind&nbsp;<input name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                        <li>Presence&nbsp;<input name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                    </ul>
+                    <h4>Damage You've Taken</h4>
+                    <ul>
+                        <li>Damage&nbsp;<input name="damage" [(ngModel)]="damage" (blur)="setDamage($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="99" /></li>
+                    </ul>
                 </div>
             </div>
-        </form>
+            <div class="col-md-6">
+                <div class="charactercombatattrs">
+                    <h4>Character Combat Attributes</h4>
+                    <ul>
+                        <li>Vitality:&nbsp;<span class="float-right"><strong>{{vitality}}</strong></span></li>
+                        <li>Evasion:&nbsp;<span class="float-right"><strong>{{evasion}}</strong></span></li>
+                        <li>Armor:&nbsp;<span class="float-right"><strong>{{armor}}</strong></span></li>
+                        <li>Alacrity:&nbsp;<span class="float-right"><strong>{{alacrity}}</strong></span></li>
+                        <li>Tenacity:&nbsp;<span class="float-right"><strong>{{tenacity}}</strong></span></li>
+                        <li>Power:&nbsp;<span class="float-right"><strong>{{power}}</strong></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-
+    <div class="clearfix">&nbsp;</div>
+    <div class="container attributes">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="characterskillranks">
+                    <h4>Base Attribute Skills</h4>
+                    <ul>
+                        <li>Strength
+                            <ul>
+                                <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                            </ul>
+                        </li>
+                        <li>Dexterity
+                            <ul>
+                                <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Theivery&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Stealth&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                            </ul>
+                        </li>
+                        <li>Mind
+                            <ul>
+                                <li>Learned&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Survival&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Perception&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Apothecary&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                            </ul>
+                        </li>
+                        <li>Presence
+                            <ul>
+                                <li>Intimidation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Performance&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Manipulation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Insight&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                            </ul>
+                        </li>
+                        <li>Mind&nbsp;<span class="float-right">Rank:&nbsp;0</span>
+                            <ul>
+                                <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="baseattribskills">
+                    <h4>Character Skill Ranking Scale</h4>
+                    <ul>
+                        <li>Untrained:&nbsp;<span class="float-right"><strong>{{untrained}}</strong></span></li>
+                        <li>Novice:&nbsp;<span class="float-right"><strong>{{novice}}</strong></span></li>
+                        <li>Apprentice:&nbsp;<span class="float-right"><strong>{{apprentice}}</strong></span></li>
+                        <li>Adept:&nbsp;<span class="float-right"><strong>{{adept}}</strong></span></li>
+                        <li>Expert:&nbsp;<span class="float-right"><strong>{{expert}}</strong></span></li>
+                        <li>Master:&nbsp;<span class="float-right"><strong>{{master}}</strong></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <ng-template #template>
         <div class="modal-header">
