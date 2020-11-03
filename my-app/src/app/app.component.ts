@@ -5,7 +5,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { environment } from '../environments/environment';
 import { CharAttributeService } from './char-attribute.service';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'my-app-root',
@@ -23,6 +22,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   public loading: boolean;
   public jsonPath: string;
 
+  // Base attribs
+  public strength: number;
+  public dexterity: number;
+  public mind: number;
+  public presence: number;
+
   // Combat attribs
   public vitality: number;
   public evasion: number;
@@ -32,9 +37,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   public power: number;
   public damageValue: any;
   public combatValue: number;
-  public dexterity: any;
-  public mind: any;
-  public presence: number;
 
   constructor(
     private titleService: Title,
@@ -148,16 +150,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
     if (e.target.name === 'dexterity') {
       this.dexterity = retCombatAttrVal;
-      this.evasion = retCombatAttrVal + 10;
+      this.evasion = +retCombatAttrVal + +10;
+      this.armor = this.evasion;
     }
     if (e.target.name === 'armor') {
-      this.armor = retCombatAttrVal + this.evasion;
+
     }
-    if (e.target.name === 'alacrity') {
-      this.alacrity = this.dexterity + this.mind;
+    if (e.target.name === 'mind') {
+      this.alacrity = +this.dexterity + +this.mind;
     }
     if (e.target.name === 'tenacity') {
-      this.tenacity = 1 + this.presence;
+      this.tenacity = +1 + +this.presence;
     }
   }
 

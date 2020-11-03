@@ -60,10 +60,10 @@
                     <div class="characterbaseattrs">
                         <h4>Character Base Attributes</h4>
                         <ul>
-                            <li>Strength<input #strength name="strength" ngModel="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="1000" /></li>
-                            <li>Dexterity&nbsp;<input #dexterity name="dexterity" ngModel="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                            <li>Mind&nbsp;<input #mind name="mind" ngModel="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                            <li>Presence&nbsp;<input #presence name="presence" ngModel="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Strength<input #strength name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="1000" /></li>
+                            <li>Dexterity&nbsp;<input #dexterity name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Mind&nbsp;<input #mind name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                            <li>Presence&nbsp;<input #presence name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
                         </ul>
                         <h4>Damage You've Taken</h4>
                         <ul>
