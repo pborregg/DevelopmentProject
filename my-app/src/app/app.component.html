@@ -94,37 +94,33 @@
                 <div class="characterskillranks">
                     <h4>Base Attribute Skills</h4>
                     <ul>
-                        <li>Strength
+                        <li><strong>Strength</strong>
                             <ul>
-                                <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;<input name="strengthfighting" [(ngModel)]="strengthfighting" (blur)="checkSkillLevel($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="100" /></span></li>
                             </ul>
                         </li>
-                        <li>Dexterity
+                        <li><strong>Dexterity</strong>
                             <ul>
                                 <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Theivery&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                                 <li>Stealth&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Theivery&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                             </ul>
                         </li>
-                        <li>Mind
+                        <li><strong>Mind</strong>
                             <ul>
-                                <li>Learned&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Survival&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Perception&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                                 <li>Apothecary&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                            </ul>
-                        </li>
-                        <li>Presence
-                            <ul>
-                                <li>Intimidation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Performance&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Manipulation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Insight&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Learned&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Perception&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                                 <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Survival&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                             </ul>
                         </li>
-                        <li>Mind&nbsp;<span class="float-right">Rank:&nbsp;0</span>
+                        <li><strong>Presence</strong>
                             <ul>
+                                <li>Insight&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Intimidation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Manipulation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Performance&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                                 <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
                             </ul>
                         </li>

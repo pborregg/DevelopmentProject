@@ -17,7 +17,7 @@ export class CharAttributeService {
 
     switch (attribname) {
       case 'strength':
-        attribValue = 3 + attribnbr;
+        attribValue = +3 + +attribnbr;
         break;
       default:
         break;
@@ -31,6 +31,12 @@ export class CharAttributeService {
         attribValue = attribnbr;
     }
     return attribValue;
+  }
+
+  public setSkillRanking(attribute: string, skill: string): void {
+
+
+
   }
 
 }

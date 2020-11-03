@@ -48,6 +48,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public damage: number;
 
+  public strengthfighting: number;
+
   constructor(
     private titleService: Title,
     private httpService: HttpClient,
@@ -69,6 +71,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.adept = 3;
     this.expert = 4;
     this.master = 5;
+    this.strengthfighting = 0;
   }
 
   // tslint:disable-next-line: typedef
@@ -206,4 +209,19 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.damageValue = 0;
     }
   }
+
+  public checkSkillLevel(e: any): boolean {
+    let retVal = true;
+    const elX = this.strength;
+    const elY = this.strengthfighting;
+
+    if (elY > elX) {
+      window.alert('Oops! You cannot go higher than the value of your skillset!');
+      this.strengthfighting = 0;
+      retVal = false;
+    }
+    return retVal;
+  }
+
+
 }
