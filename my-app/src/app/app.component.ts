@@ -49,6 +49,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public damage: number;
 
   public strengthfighting: number;
+  public sfrankvalue: string;
 
   constructor(
     private titleService: Title,
@@ -217,8 +218,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     if (elY > elX) {
       window.alert('Oops! You cannot go higher than the value of your skillset!');
-      this.strengthfighting = 0;
+      this.strengthfighting = this.strength;
       retVal = false;
+    } else {
+      this.sfrankvalue = this.charAttributeService.setSkillRanking(elY);
     }
     return retVal;
   }
