@@ -61,10 +61,10 @@
                 <div class="characterbaseattrs">
                     <h4>Character Base Attributes</h4>
                     <ul>
-                        <li>Strength<input name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="1000" /></li>
-                        <li>Dexterity&nbsp;<input name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                        <li>Mind&nbsp;<input name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
-                        <li>Presence&nbsp;<input name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="1000" /></li>
+                        <li>Strength<input name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></li>
+                        <li>Dexterity&nbsp;<input name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
+                        <li>Mind&nbsp;<input name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
+                        <li>Presence&nbsp;<input name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
                     </ul>
                     <h4>Damage You've Taken</h4>
                     <ul>
@@ -96,32 +96,32 @@
                     <ul>
                         <li><strong>Strength</strong>
                             <ul>
-                                <li>Fighting:&nbsp;<strong>{{sfrankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="strengthfighting" [(ngModel)]="strengthfighting" (blur)="checkSkillLevel($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="100" /></span></li>
+                                <li>Fighting:&nbsp;<strong>{{strengthFightingRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="strengthfighting" [(ngModel)]="strengthfighting" (blur)="checkSkillLevel($event, 'strength')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
                             </ul>
                         </li>
                         <li><strong>Dexterity</strong>
                             <ul>
-                                <li>Fighting&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Stealth&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Theivery&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Fighting&nbsp;<strong>{{dexterityFightingRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="dexterityFighting" [(ngModel)]="dexterityFighting" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Stealth&nbsp;<strong>{{dexterityStealthRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="dexterityStealth" [(ngModel)]="dexterityStealth" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Theivery&nbsp;<strong>{{dexterityTheiveryRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="dexterityTheivery" [(ngModel)]="dexterityTheivery" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
                             </ul>
                         </li>
                         <li><strong>Mind</strong>
                             <ul>
-                                <li>Apothecary&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Learned&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Perception&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Survival&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Apothecary&nbsp;<strong>{{mindApothecaryRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="mindApothecary" [(ngModel)]="mindApothecary" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Learned&nbsp;<strong>{{mindLearnedRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="mindLearned" [(ngModel)]="mindLearned" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Perception&nbsp;<strong>{{mindPerceptionRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="mindPerception" [(ngModel)]="mindPerception" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Power&nbsp;<strong>{{mindPowerRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="mindPower" [(ngModel)]="mindPower" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Survival&nbsp;<strong>{{mindSurvivalRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="mindSurvival" [(ngModel)]="mindSurvival" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
                             </ul>
                         </li>
                         <li><strong>Presence</strong>
                             <ul>
-                                <li>Insight&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Intimidation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Manipulation&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Performance&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
-                                <li>Power&nbsp;<span class="float-right">Rank:&nbsp;0</span></li>
+                                <li>Insight&nbsp;<strong>{{presenceInsightRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="presenceInsight" [(ngModel)]="presenceInsight" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Intimidation&nbsp;<strong>{{presenceIntimidationRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="presenceIntimidation" [(ngModel)]="presenceIntimidation" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Manipulation&nbsp;<strong>{{presenceManipulationRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="presenceManipulation" [(ngModel)]="presenceManipulation" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Performance&nbsp;<strong>{{presencePerformanceRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="presencePerformance" [(ngModel)]="presencePerformance" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
+                                <li>Power&nbsp;<strong>{{presencePowerRankvalue}}</strong>&nbsp;<span class="float-right">Rank:&nbsp;<input name="presencePower" [(ngModel)]="presencePower" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></span></li>
                             </ul>
                         </li>
                     </ul>

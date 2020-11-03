@@ -33,33 +33,42 @@ export class CharAttributeService {
     return attribValue;
   }
 
-  public setSkillRanking(rank: number): string {
+  public setSkillRanking(rank: string): string {
 
     let rankvalue: string;
 
     switch (rank) {
-      case 0:
+      case '0':
         rankvalue = 'Untrained';
         break;
-      case 1:
+      case '1':
         rankvalue = 'Novice';
         break;
-      case 2:
+      case '2':
         rankvalue = 'Apprentice';
         break;
-      case 3:
+      case '3':
         rankvalue = 'Adept';
         break;
-      case 4:
+      case '4':
         rankvalue = 'Expert';
         break;
-      case 5:
+      case '5':
         rankvalue = 'Master';
         break;
       default:
         break;
     }
     return rankvalue;
+
+  }
+
+  public setRankingValueName(currenttargetname: string): string {
+
+    let rankName: string;
+    rankName = currenttargetname + 'Rankvalue';
+
+    return rankName;
 
   }
 

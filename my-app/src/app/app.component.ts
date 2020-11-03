@@ -48,8 +48,39 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public damage: number;
 
+  // Ranking
   public strengthfighting: number;
-  public sfrankvalue: string;
+  public strengthFightingRankvalue: string;
+  public dexterityFighting: number;
+  public dexterityFightingRankvalue: string;
+  public dexterityStealth: number;
+  public dexterityStealthRankvalue: string;
+  public dexterityTheivery: number;
+  public dexterityTheiveryRankvalue: string;
+  public mindApothecary: number;
+  public mindApothecaryRankvalue: string;
+  public mindLearned: number;
+  public mindLearnedRankvalue: string;
+  public mindPerception: number;
+  public mindPerceptionRankvalue: string;
+  public mindPower: number;
+  public mindPowerRankvalue: string;
+  public mindSurvival: number;
+  public mindSurvivalRankvalue: string;
+  public presenceInsight: number;
+  public presenceInsightRankvalue: string;
+  public presenceIntimidation: number;
+  public presenceIntimidationRankvalue: string;
+  public presenceManipulation: number;
+  public presenceManipulationRankvalue: string;
+  public presencePerformance: number;
+  public presencePerformanceRankvalue: string;
+  public presencePower: number;
+  public presencePowerRankvalue: string;
+
+
+  public currTargetName: any;
+  public currTargetValue: any;
 
   constructor(
     private titleService: Title,
@@ -162,6 +193,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     console.log('Event TARGET: ', e);
     console.log('Event Char Attrib incoming for: ' + e.target.name + '    ' + e.target.value);
 
+    this.currTargetName = e.target.name;
+    this.currTargetValue = e.target.value;
+
     retCombatAttrVal = this.charAttributeService.attributeServiceNode(e.target.name, e.target.value);
 
     if (e.target.name === 'strength') {
@@ -211,17 +245,63 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public checkSkillLevel(e: any): boolean {
+  public checkSkillLevel(e: any, parentname: string): boolean {
+
+    console.log('Event: ', e);
+    this.currTargetName = parentname;
+    console.log('Current Target Name: ', this.currTargetName);
+    console.log('Current Target Value: ', this.currTargetValue);
+
+    console.log('Current Skill Rank Name: ', e.target.name);
+    console.log('Current Skill Rank Value: ', e.target.value);
+
     let retVal = true;
-    const elX = this.strength;
-    const elY = this.strengthfighting;
+    const elX = this.currTargetValue;
+    const elY = e.target.value;
 
     if (elY > elX) {
       window.alert('Oops! You cannot go higher than the value of your skillset!');
-      this.strengthfighting = this.strength;
+      e.target.value = this.currTargetValue;
       retVal = false;
     } else {
-      this.sfrankvalue = this.charAttributeService.setSkillRanking(elY);
+
+      if (this.currTargetName === 'strength') {
+        this.strengthFightingRankvalue = this.charAttributeService.setSkillRanking(elY);
+      } else if (this.currTargetName === 'dexterity') {
+        if (e.target.name === 'dexterityFighting') {
+          this.dexterityFightingRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'dexterityStealth') {
+          this.dexterityStealthRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'dexterityTheivery') {
+          this.dexterityTheiveryRankvalue = this.charAttributeService.setSkillRanking(elY);
+        }
+      } else if (this.currTargetName === 'mind') {
+        if (e.target.name === 'mindApothecary') {
+          this.mindApothecaryRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'mindLearned') {
+          this.mindLearnedRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'mindPerception') {
+          this.mindPerceptionRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'mindPower') {
+          this.mindPowerRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'mindSurvival') {
+          this.mindSurvivalRankvalue = this.charAttributeService.setSkillRanking(elY);
+        }
+      } else if (this.currTargetName === 'presence') {
+        if (e.target.name === 'presenceInsight') {
+          this.presenceInsightRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'presenceIntimidation') {
+          this.presenceIntimidationRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'presenceManipulation') {
+          this.presenceManipulationRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'presencePerformance') {
+          this.presencePerformanceRankvalue = this.charAttributeService.setSkillRanking(elY);
+        } else if (e.target.name === 'presencePower') {
+          this.presencePowerRankvalue = this.charAttributeService.setSkillRanking(elY);
+        }
+      }
+
+      console.log('RANK VALUE: ', e.target.name + 'Rankvalue');
     }
     return retVal;
   }
