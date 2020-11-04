@@ -383,6 +383,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public generateSkillValue(e: any, skill: string, rank: string): void {
 
+    console.log('Event for Generating Skill Rank: ', e.target);
+
     if (skill === 'strength') {
 
       this.genNumber = this.charAttributeService.generateSkillValue(this.strength);

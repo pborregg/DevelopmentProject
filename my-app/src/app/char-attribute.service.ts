@@ -112,7 +112,24 @@ export class CharAttributeService {
 
   }
 
+  public setGeneratedRankValue(genbtnid: string): number {
 
+  }
+
+  public exportCharacter(): boolean {
+
+    let retBool = true;
+
+
+
+    return retBool;
+  }
+
+  public importCharacter(character: object): void {
+
+
+
+  }
 
 
 }
