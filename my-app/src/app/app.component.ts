@@ -165,20 +165,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: setTitle
-   * description: uses title service to set the title on the browser
-   * arguments: newTitle - string
-   * returns: nothing
+   * @function: setTitle
+   * @description: uses title service to set the title on the browser
+   * @param: newTitle - string
+   * @returns: nothing
    */
   public setTitle(newTitle: string): void {
     this.titleService.setTitle(newTitle);
   }
 
   /**
-   * function: openModal
-   * description: opens the character name change modal
-   * arguments: template - Template that's used to open the modal
-   * returns: nothing
+   * @function: openModal
+   * @description: opens the character name change modal
+   * @param: template - Template that's used to open the modal
+   * @returns: nothing
    */
 
   // tslint:disable-next-line: typedef
@@ -187,10 +187,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: changeCharName
-   * description: changes the character's name
-   * arguments: event
-   * returns: nothing
+   * @function: changeCharName
+   * @description: changes the character's name
+   * @param: event
+   * @returns: nothing
    */
   public changeCharName(event): void {
     const msg = (document.getElementById('newcharname') as HTMLInputElement).value;
@@ -205,10 +205,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: prepareData
-   * description: prepares the data from the DB (JSON Schema) in this case
-   * arguments: newcharname - string
-   * returns: nothing
+   * @function: prepareData
+   * @description: prepares the data from the DB (JSON Schema) in this case
+   * @param: newcharname - string
+   * @returns: nothing
    */
   public prepareData(newcharname: string): void {
     console.log('this.FilterData' + JSON.stringify(newcharname));
@@ -221,10 +221,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: onsubmit
-   * description: submits the character name change modal
-   * arguments: none
-   * returns: nothing
+   * @function: onsubmit
+   * @description: submits the character name change modal
+   * @param: none
+   * @returns: nothing
    */
   public onsubmit(): void {
     console.log('Event onSubmit: ', this.newCharName);
@@ -232,10 +232,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: calcCharComputedAttribs
-   * description: calculates the computed attributes
-   * arguments: event
-   * returns: nothing
+   * @function: calcCharComputedAttribs
+   * @description: calculates the computed attributes
+   * @param: event
+   * @returns: nothing
    */
   public calcCharComputedAttribs(e: any): void {
     let retCombatAttrVal: number;
@@ -277,10 +277,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: calcCharComputedAttribs
-   * description: calculates the computed attributes
-   * arguments: event
-   * returns: nothing
+   * @function: calcCharComputedAttribs
+   * @description: calculates the computed attributes
+   * @param: event
+   * @returns: nothing
    */
   public setDamage(e: any): void {
     this.damageValue = e.target.value;
@@ -291,20 +291,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: displayDeathNotice
-   * description: displays death notice that you are "DYING"
-   * arguments: msg
-   * returns: nothing
+   * @function: displayDeathNotice
+   * @description: displays death notice that you are "DYING"
+   * @param: msg
+   * @returns: nothing
    */
   public displayDeathNotice(msg: string): void {
     window.alert(msg);
   }
 
   /**
-   * function: checkDamageValue
-   * description: checks if there's a damage value for future use
-   * arguments: none
-   * returns: nothing
+   * @function: checkDamageValue
+   * @description: checks if there's a damage value for future use
+   * @param: none
+   * @returns: nothing
    */
   public checkDamageValue(): void {
     if (this.damageValue === undefined) {
@@ -313,10 +313,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * function: checkSkillLevel
-   * description: checks Skill Level for the character
-   * arguments: e: any, parentname: string
-   * returns: boolean
+   * @function: checkSkillLevel
+   * @description: checks Skill Level for the character
+   * @param: e: any
+   * @param: parentname: string
+   * @returns: boolean
    */
   public checkSkillLevel(e: any, parentname: string): boolean {
 
@@ -394,6 +395,31 @@ export class AppComponent implements OnInit, AfterViewInit {
       console.log('Generated Rank Number: ' + this.genRnkNbr);
     }
 
+  }
+
+  /**
+   * @function: exportCharacter
+   * @description: exports the characters current status
+   * @param: none
+   * @returns: nothing
+   */
+  public exportCharacter(): boolean {
+    return this.charAttributeService.exportCharacter();
+  }
+
+  // tslint:disable-next-line: ban-types
+  /**
+   * @function: importCharacter
+   * @description: imports Character Object
+   * @param charToImport
+   * @returns boolean | true if successful false if not
+   */
+  public importCharacter(charToImport: Object): boolean {
+    let retValBool = true;
+
+    retValBool = this.charAttributeService.importCharacter(charToImport);
+
+    return retValBool;
   }
 
 }

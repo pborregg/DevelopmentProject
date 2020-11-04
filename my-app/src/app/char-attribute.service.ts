@@ -125,10 +125,12 @@ export class CharAttributeService {
     return retBool;
   }
 
-  public importCharacter(character: object): void {
+  public importCharacter(character: object): boolean {
+    let retBool = true;
 
 
 
+    return retBool;
   }
 
 

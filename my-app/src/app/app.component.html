@@ -89,6 +89,16 @@
     <div class="card-container">
         <img src="./assets/images/{{avatar}}" class="avatar" alt="" title="{{charName}}" />
     </div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-5">
+            <button type="button" class="btn btn-primary btn-sm" (click)="exportCharacter($event)">Export Character</button>
+        </div>
+        <div class="col-md-1">&nbsp;</div>
+        <div class="col-md-5">
+            <button type="button" class="btn btn-primary btn-sm" (click)="exportCharacter($event)">Import Character</button>
+        </div>
+    </div>
 
     <!-- Next Steps -->
     <h2>Next Steps</h2>
