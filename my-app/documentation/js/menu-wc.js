@@ -16,7 +16,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
         <nav>
             <ul class="list">
                 <li class="title">
-                    <a href="index.html" data-type="index-link">TRPG documentation</a>
+                    <a href="index.html" data-type="index-link">TRPG Testing App - Xcite Interactive</a>
                 </li>
 
                 <li class="divider"></li>
@@ -55,19 +55,34 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AppModule.html" data-type="entity-link">AppModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AppModule-09dac5a5e06e74c936b8cb22674478f6"' : 'data-target="#xs-components-links-module-AppModule-09dac5a5e06e74c936b8cb22674478f6"' }>
+                                            'data-target="#components-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' : 'data-target="#xs-components-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-09dac5a5e06e74c936b8cb22674478f6"' :
-                                            'id="xs-components-links-module-AppModule-09dac5a5e06e74c936b8cb22674478f6"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' :
+                                            'id="xs-components-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' }>
                                             <li class="link">
                                                 <a href="components/AppComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AppComponent</a>
                                             </li>
                                         </ul>
                                     </li>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#injectables-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' : 'data-target="#xs-injectables-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' }>
+                                        <span class="icon ion-md-arrow-round-down"></span>
+                                        <span>Injectables</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' :
+                                        'id="xs-injectables-links-module-AppModule-07e7fcaab4e1efb716ef5daecf0f595b"' }>
+                                        <li class="link">
+                                            <a href="injectables/TrpgservicesService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>TrpgservicesService</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </li>
                             <li class="link">
                                 <a href="modules/AppRoutingModule.html" data-type="entity-link">AppRoutingModule</a>
@@ -95,6 +110,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                                <li class="link">
+                                    <a href="injectables/CharAttributeService.html" data-type="entity-link">CharAttributeService</a>
+                                </li>
                                 <li class="link">
                                     <a href="injectables/TrpgservicesService.html" data-type="entity-link">TrpgservicesService</a>
                                 </li>

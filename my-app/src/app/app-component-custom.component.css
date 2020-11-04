@@ -14,3 +14,11 @@
 .welcomemsg {
     color: #fff !important;
 }
+
+.btnxsmall {
+    height: 20px;
+    width: 65px;
+    border-radius: 15px;
+    font-size: 10px;
+    line-height: 4px;
+}

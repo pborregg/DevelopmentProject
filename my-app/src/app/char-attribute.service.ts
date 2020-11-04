@@ -67,9 +67,54 @@ export class CharAttributeService {
 
     let rankName: string;
     rankName = currenttargetname + 'Rankvalue';
-
     return rankName;
+  }
+
+  public generateSkillValue(nbr: number): number {
+
+    let finalRetNbr: number;
+    const genNbrA = Math.floor(Math.random() * 20) + 1;
+    const genNbrB = Math.floor(Math.random() * 20) + 1;
+
+    if (genNbrA < genNbrB) {
+      finalRetNbr = genNbrA;
+    } else {
+      finalRetNbr = genNbrB;
+    }
+    return finalRetNbr;
+  }
+
+  public generateSkillRankValue(skillrankvalue: number): number {
+    console.log('Skill Number coming in: ' + skillrankvalue);
+
+    let finalRetVal: number;
+    let untrainedVal: number;
+    let otherRankVal: number;
+    const genRnkNbrA = Math.floor(Math.random() * 20) + 1;
+    const genRnkNbrB = Math.floor(Math.random() * 20) + 1;
+
+    if (skillrankvalue === 0) { // UNTRAINED
+      if (genRnkNbrA < genRnkNbrB) {
+        untrainedVal = genRnkNbrA;
+      } else {
+        untrainedVal = genRnkNbrB;
+      }
+      finalRetVal = untrainedVal;
+    }
+
+    if (skillrankvalue > 1 && skillrankvalue < 5) {
+      otherRankVal = Math.floor(Math.random() * 20) + 1;
+      const result = (otherRankVal + (skillrankvalue - 1) * 2);
+      finalRetVal = result;
+    }
+
+    return finalRetVal;
 
   }
 
+
+
+
 }
+
+

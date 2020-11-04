@@ -157,15 +157,34 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
+  /**
+   * function: setTitle
+   * description: uses title service to set the title on the browser
+   * arguments: newTitle - string
+   * returns: nothing
+   */
   public setTitle(newTitle: string): void {
     this.titleService.setTitle(newTitle);
   }
 
+  /**
+   * function: openModal
+   * description: opens the character name change modal
+   * arguments: template - Template that's used to open the modal
+   * returns: nothing
+   */
+
   // tslint:disable-next-line: typedef
-  public openModal(template: TemplateRef<any>) {
+  public openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template);
   }
 
+  /**
+   * function: changeCharName
+   * description: changes the character's name
+   * arguments: event
+   * returns: nothing
+   */
   public changeCharName(event): void {
     const msg = (document.getElementById('newcharname') as HTMLInputElement).value;
     console.log('New Character Name: ' + msg);
@@ -173,6 +192,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.prepareData(msg);
   }
 
+  /**
+   * function: prepareData
+   * description: prepares the data from the DB (JSON Schema) in this case
+   * arguments: newcharname - string
+   * returns: nothing
+   */
   public prepareData(newcharname: string): void {
     console.log('this.FilterData' + JSON.stringify(newcharname));
     // const myNewCharName = this.trpgServices.post(this.jsonPath, newcharname);
@@ -183,11 +208,23 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.onsubmit();
   }
 
+  /**
+   * function: onsubmit
+   * description: submits the character name change modal
+   * arguments: none
+   * returns: nothing
+   */
   public onsubmit(): void {
     console.log('Event onSubmit: ', this.newCharName);
     this.modalRef.hide();
   }
 
+  /**
+   * function: calcCharComputedAttribs
+   * description: calculates the computed attributes
+   * arguments: event
+   * returns: nothing
+   */
   public calcCharComputedAttribs(e: any): void {
     let retCombatAttrVal: number;
     console.log('Event TARGET: ', e);
@@ -227,6 +264,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
+  /**
+   * function: calcCharComputedAttribs
+   * description: calculates the computed attributes
+   * arguments: event
+   * returns: nothing
+   */
   public setDamage(e: any): void {
     this.damageValue = e.target.value;
     this.checkDamageValue();
@@ -235,16 +278,34 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * function: displayDeathNotice
+   * description: displays death notice that you are "DYING"
+   * arguments: msg
+   * returns: nothing
+   */
   public displayDeathNotice(msg: string): void {
     window.alert(msg);
   }
 
+  /**
+   * function: checkDamageValue
+   * description: checks if there's a damage value for future use
+   * arguments: none
+   * returns: nothing
+   */
   public checkDamageValue(): void {
     if (this.damageValue === undefined) {
       this.damageValue = 0;
     }
   }
 
+  /**
+   * function: checkSkillLevel
+   * description: checks Skill Level for the character
+   * arguments: e: any, parentname: string
+   * returns: boolean
+   */
   public checkSkillLevel(e: any, parentname: string): boolean {
 
     console.log('Event: ', e);
@@ -306,5 +367,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     return retVal;
   }
 
+
+
+  public generateSkillValue(e: any): void {
+    const genNumber = this.charAttributeService.generateSkillValue(e.target.value);
+    console.log('Generated Number: ' + genNumber);
+  }
 
 }
