@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public title = 'TRPG Testing App';
   public userName: string;
   public charName: string;
+  public avatar: string;
   public newCharName: string;
   public trpgSchema: string[];
   public modalRef: BsModalRef;
@@ -81,6 +82,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public currTargetName: any;
   public currTargetValue: any;
+  // generated Skill and Rank Numbers
+  public genNumber: number;
+  public genRnkNbr: number;
 
   constructor(
     private titleService: Title,
@@ -122,6 +126,9 @@ export class AppComponent implements OnInit, AfterViewInit {
         console.log('Schema: ', this.trpgSchema);
         this.userName = this.trpgSchema.playername;
         this.charName = this.trpgSchema.character.name;
+        this.avatar = this.trpgSchema.character.avatar;
+
+        console.log('Avatar: ' + this.avatar);
       },
       (err: HttpErrorResponse) => {
         console.log('Error: ', err.message);
@@ -189,6 +196,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     const msg = (document.getElementById('newcharname') as HTMLInputElement).value;
     console.log('New Character Name: ' + msg);
     this.newCharName = msg;
+    if (this.newCharName === 'Joseph') {
+      this.avatar = 'joseph.png';
+    } else {
+      this.avatar = this.trpgSchema.character.avatar;
+    }
     this.prepareData(msg);
   }
 
@@ -370,14 +382,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   public generateSkillValue(e: any, skill: string, rank: string): void {
-    let genNumber: number;
-    let genRnkNbr: number;
-    if (skill === 'strength') {
-      genNumber = this.charAttributeService.generateSkillValue(this.strength);
-      console.log('Generated Skill Number: ' + genNumber);
 
-      genRnkNbr = this.charAttributeService.generateSkillRankValue(this.strengthfighting);
-      console.log('Generated Rank Number: ' + genRnkNbr);
+    if (skill === 'strength') {
+
+      this.genNumber = this.charAttributeService.generateSkillValue(this.strength);
+      console.log('Generated Skill Number: ' + this.genNumber);
+
+      this.genRnkNbr = this.charAttributeService.generateSkillRankValue(this.strengthfighting);
+      console.log('Generated Rank Number: ' + this.genRnkNbr);
     }
 
   }

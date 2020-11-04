@@ -1,7 +1,8 @@
 {
     "playername": "Peter Borreggine",
     "character": {
-        "name": "Archangel Orphieal",
+        "name": "Valarian",
+        "avatar": "valarian.png",
         "newname": "",
         "traits": [{
             "name": "",
