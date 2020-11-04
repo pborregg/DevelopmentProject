@@ -90,8 +90,8 @@ export class CharAttributeService {
     let finalRetVal: number;
     let untrainedVal: number;
     let otherRankVal: number;
-    const genRnkNbrA = Math.floor(Math.random() * 20) + 1;
-    const genRnkNbrB = Math.floor(Math.random() * 20) + 1;
+    const genRnkNbrA = Math.floor(Math.random() * 5) + 1;
+    const genRnkNbrB = Math.floor(Math.random() * 5) + 1;
 
     if (skillrankvalue === 0) { // UNTRAINED
       if (genRnkNbrA < genRnkNbrB) {
