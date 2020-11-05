@@ -523,7 +523,7 @@ export class AppComponent implements OnInit, AfterViewInit {
    * @param: charToImport
    * @returns boolean | true if successful false if not
    */
-  public importCharacter(charToImport: string): boolean {
+  public importCharacter(event: any, charToImport: string): boolean {
     let retValBool = true;
 
     retValBool = this.charAttributeService.importCharacter(charToImport);
