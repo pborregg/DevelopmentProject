@@ -138,6 +138,8 @@ export class CharAttributeService {
 
   public setGeneratedRankValue(genbtnid: string): number {
 
+
+    return 0;
   }
 
   // tslint:disable-next-line: ban-types

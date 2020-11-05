@@ -145,6 +145,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.presence = 0;
     this.damage = 0;
     this.chest = 'Chest Armor';
+    this.equipped = 'shield-gray.jpg';
   }
 
   ngAfterViewInit(): void {
