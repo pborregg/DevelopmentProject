@@ -75,7 +75,7 @@
                 "evasion": {
                     "value": 10
                 },
-                "amor": {
+                "armor": {
                     "value": 10,
                     "slotused": false,
                     "armortype": {

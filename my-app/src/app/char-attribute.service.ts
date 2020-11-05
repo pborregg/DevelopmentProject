@@ -1,12 +1,36 @@
 import { Injectable } from '@angular/core';
-import { BrowserStack } from 'protractor/built/driverProviders';
+// import { BaseInformation,
+// BaseTraits,
+//   BaseAttributes,
+//   Strength,
+//   Dexterity,
+//   Mind,
+//   Presence,
+//   CharacterCombatAttributes
+// } from './interfaces/char-generated-skill-rank.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharAttributeService {
 
-  constructor() { }
+  private characterInfo = {
+    name: '',
+    avatar: '',
+    newname: ''
+  }
+
+
+  constructor(
+    // private baseInformation: BaseInformation,
+    // private baseTraits: BaseTraits,
+    // private baseAttributes: BaseAttributes,
+    // private strength: Strength,
+    // private dexterity: Dexterity,
+    // private mind: Mind,
+    // private presence: Presence,
+    // private charCombatAttributes: CharacterCombatAttributes
+  ) { }
 
   // tslint:disable-next-line: typedef
   public attributeServiceNode(attribname: string, attribnbr: number): number {
@@ -116,24 +140,26 @@ export class CharAttributeService {
 
   }
 
-  public exportCharacter(): boolean {
+  // tslint:disable-next-line: ban-types
+  public exportCharacter(charInfo: Object): boolean {
 
     let retBool = true;
+    console.log('CHAR INFO: ', charInfo);
 
-
+    if (!charInfo) {
+      retBool = false;
+    }
 
     return retBool;
   }
 
-  public importCharacter(character: object): boolean {
+  public importCharacter(character: string): boolean {
     let retBool = true;
 
+    console.log('Character to Import: ', character);
 
 
     return retBool;
   }
-
 
 }
-
-

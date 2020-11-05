@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { environment } from '../environments/environment';
 import { CharAttributeService } from './char-attribute.service';
+import { NumberValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'my-app-root',
@@ -58,6 +59,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   public dexterityStealthRankvalue: string;
   public dexterityTheivery: number;
   public dexterityTheiveryRankvalue: string;
+  public dexterityArchery: number;
+  public dexterityArcheryRankvalue: number;
   public mindApothecary: number;
   public mindApothecaryRankvalue: string;
   public mindLearned: number;
@@ -78,7 +81,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   public presencePerformanceRankvalue: string;
   public presencePower: number;
   public presencePowerRankvalue: string;
-
+  public chest: string;
+  public equipped: string;
 
   public currTargetName: any;
   public currTargetValue: any;
@@ -140,6 +144,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.mind = 0;
     this.presence = 0;
     this.damage = 0;
+    this.chest = 'Chest Armor';
   }
 
   ngAfterViewInit(): void {
@@ -292,7 +297,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   /**
    * @function: displayDeathNotice
-   * @description: displays death notice that you are "DYING"
+   * @description: displays death notice that you are DYING
    * @param: msg
    * @returns: nothing
    */
@@ -403,23 +408,135 @@ export class AppComponent implements OnInit, AfterViewInit {
    * @param: none
    * @returns: nothing
    */
-  public exportCharacter(): boolean {
-    return this.charAttributeService.exportCharacter();
+  public exportCharacter(event: any, charname: string): boolean {
+
+
+    const charInfo = {
+      name: charname,
+      avatar: this.avatar,
+      newname: this.newCharName,
+      traits: [{
+        name: '',
+        requirement: ''
+      }],
+      baseattribs: {
+        strength: {
+          value: this.strength,
+          fighting: {
+            value: this.strengthfighting
+          }
+        },
+        dexterity: {
+          value: this.dexterity,
+          fighting: {
+            value: this.dexterityFighting
+          },
+          thievery: {
+            value: this.dexterityTheivery
+          },
+          stealth: {
+            value: this.dexterityStealth
+          },
+          archery: {
+            value: this.dexterityArchery
+          }
+        },
+        mind: {
+          value: this.mind,
+          learned: {
+            value: this.mindLearned
+          },
+          survival: {
+            value: this.mindSurvival
+          },
+          perception: {
+            value: this.mindPerception
+          },
+          apothecary: {
+            value: this.mindApothecaryRankvalue
+          },
+          power: {
+            value: this.mindPower
+          }
+        },
+        presence: {
+          intimidation: {
+            value: this.presenceIntimidation
+          },
+          performance: {
+            value: this.presencePerformance
+          },
+          manipulation: {
+            value: this.presenceManipulation
+          },
+          insight: {
+            value: this.presenceInsight
+          },
+          power: {
+            value: this.presencePower
+          },
+          exported: true,
+          imported: false
+        },
+        combatattribs: {
+          vitality: {
+            value: this.vitality,
+            damage: this.damageValue
+          },
+          evasion: {
+            value: this.evasion
+          },
+          armor: {
+            value: this.armor,
+            slotused: false,
+            armortype: {
+              value: this.chest
+            },
+            dexteritybonus: false
+          },
+          alacrity: {
+            value: 0
+          },
+          tenacity: {
+            value: 0
+          },
+          power: {
+            value: 0
+          },
+          skills: {
+            rank: 0
+          }
+        }
+      }
+    }
+
+
+    return this.charAttributeService.exportCharacter(charInfo);
+
   }
 
   // tslint:disable-next-line: ban-types
   /**
    * @function: importCharacter
    * @description: imports Character Object
-   * @param charToImport
+   * @param: charToImport
    * @returns boolean | true if successful false if not
    */
-  public importCharacter(charToImport: Object): boolean {
+  public importCharacter(charToImport: string): boolean {
     let retValBool = true;
 
     retValBool = this.charAttributeService.importCharacter(charToImport);
 
     return retValBool;
+  }
+
+  public armorEquipped(event: any): void {
+    console.log('Event Armor Equipped: ', event.target.id);
+    if (event.target.id === 'yes') {
+      this.equipped = 'shield-green.jpg';
+    } else {
+      this.equipped = 'shield-red.jpg';
+    }
   }
 
 }
