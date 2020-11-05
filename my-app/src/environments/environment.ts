@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   JSONOBJECTPATH: {
-    trpgdata: './assets/trpg-schema.json'
+    valarian: './assets/valarian-schema.json',
+    archangel: './assets/archangel-schema.json',
+    joseph: './assets/joseph-schema.json',
   }
 };
 

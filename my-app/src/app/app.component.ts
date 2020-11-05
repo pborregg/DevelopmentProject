@@ -19,10 +19,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   public charName: string;
   public avatar: string;
   public newCharName: string;
-  public trpgSchema: string[];
+  public characterSchema: string[];
   public modalRef: BsModalRef;
   public loading: boolean;
-  public jsonPath: string;
+  public characterPath: string;
 
   // Base attribs
   public strength: number;
@@ -117,20 +117,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   // tslint:disable-next-line: typedef
   ngOnInit() {
     this.setTitle(this.title);
-    this.jsonPath = environment.JSONOBJECTPATH.trpgdata;
+    this.characterPath = environment.JSONOBJECTPATH.valarian;
     if (!this.newCharName) {
       if (localStorage.getItem('newCharName')) {
         this.newCharName = localStorage.getItem('newCharName');
       }
     }
 
-    this.httpService.get(this.jsonPath).subscribe(
+    this.httpService.get(this.characterPath).subscribe(
       data => {
-        this.trpgSchema = data as string[];	 // FILL THE ARRAY WITH DATA.
-        console.log('Schema: ', this.trpgSchema);
-        this.userName = this.trpgSchema.playername;
-        this.charName = this.trpgSchema.character.name;
-        this.avatar = this.trpgSchema.character.avatar;
+        this.characterSchema = data as string[];	 // FILL THE ARRAY WITH DATA.
+        console.log('Schema: ', this.characterSchema);
+        this.userName = this.characterSchema.playername;
+        this.charName = this.characterSchema.character.name;
+        this.avatar = this.characterSchema.character.avatar;
 
         console.log('Avatar: ' + this.avatar);
       },
@@ -205,7 +205,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.newCharName === 'Joseph') {
       this.avatar = 'joseph.png';
     } else {
-      this.avatar = this.trpgSchema.character.avatar;
+      this.avatar = this.characterSchema.character.avatar;
     }
     this.prepareData(msg);
   }

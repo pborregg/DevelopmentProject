@@ -1,0 +1,101 @@
+{
+    "playername": "Peter Borreggine",
+    "character": {
+        "name": "Archangel",
+        "avatar": "archangel.png",
+        "newname": "",
+        "traits": [{
+            "name": "",
+            "requirement": ""
+        }],
+        "baseattribs": {
+            "strength": {
+                "value": 2,
+                "fighting": {
+                    "value": 1
+                }
+            },
+            "dexterity": {
+                "value": 3,
+                "fighting": {
+                    "value": 2
+                },
+                "thievery": {
+                    "value": 3
+                },
+                "stealth": {
+                    "value": 5
+                },
+                "archery": {
+                    "value": 2
+                }
+            },
+            "mind": {
+                "value": 5,
+                "learned": {
+                    "value": 6
+                },
+                "survival": {
+                    "value": 5
+                },
+                "perception": {
+                    "value": 3
+                },
+                "apothecary": {
+                    "value": 2
+                },
+                "power": {
+                    "value": 2
+                }
+            },
+            "presence": {
+                "intimidation": {
+                    "value": 3
+                },
+                "performance": {
+                    "value": 4
+                },
+                "manipulation": {
+                    "value": 5
+                },
+                "insight": {
+                    "value": 1
+                },
+                "power": {
+                    "value": 3
+                },
+                "exported": false,
+                "imported": false
+            },
+            "combatattribs": {
+                "vitality": {
+                    "value": 3,
+                    "damage": 0
+                },
+                "evasion": {
+                    "value": 10
+                },
+                "armor": {
+                    "value": 10,
+                    "slotused": false,
+                    "armortype": {
+                        "value": ""
+                    },
+                    "dexteritybonus": true
+                },
+                "alacrity": {
+                    "value": 4
+                },
+                "tenacity": {
+                    "value": 5
+                },
+                "power": {
+                    "value": 4
+                },
+                "skills": {
+                    "rank": 2
+                }
+            }
+        }
+    }
+}
