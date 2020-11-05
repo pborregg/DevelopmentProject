@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TrpgservicesService {
 
-  public enviropath: string;
+  public enviropath = {};
 
   constructor(
     private http: HttpClient
@@ -16,7 +16,7 @@ export class TrpgservicesService {
   }
 
   onInit(): void {
-    this.enviropath = environment.JSONOBJECTPATH.trpgdata;
+    this.enviropath = environment.JSONOBJECTPATH;
   }
 
   private attachAuthorization(): void {

@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import * as _ from 'lodash';
+import { environment } from './../environments/environment';
+
 // import { BaseInformation,
 // BaseTraits,
 //   BaseAttributes,
@@ -15,13 +19,16 @@ import { Injectable } from '@angular/core';
 export class CharAttributeService {
 
   private characterInfo = {
+    playername: '',
     name: '',
     avatar: '',
     newname: ''
   }
+  public characterSchema: string[];
 
 
   constructor(
+    private httpService: HttpClient
     // private baseInformation: BaseInformation,
     // private baseTraits: BaseTraits,
     // private baseAttributes: BaseAttributes,
@@ -155,15 +162,71 @@ export class CharAttributeService {
     return retBool;
   }
 
-  public importCharacter(character: string): boolean {
+  /**
+   * @function importCharacter
+   * @description imports character profile
+   * @param characterpath
+   * @returns boolean
+   */
+  public importCharacter(characterpath: string): boolean {
     let retBool = true;
+    console.log('Character to Import: ', characterpath);
 
-    console.log('Character to Import: ', character);
-
-
-
+    retBool = this.getCharacterProfile(characterpath);
 
     return retBool;
+  }
+
+  /**
+   * @function getCharacterProfile
+   * @description retrieves the character profile
+   * @param characterPath
+   * @returns boolean
+   */
+  public getCharacterProfile(characterPath): boolean {
+
+    let retBoolVal: boolean;
+
+    this.httpService.get(characterPath).subscribe(
+      data => {
+        this.characterSchema = data as string[];	 // FILL THE ARRAY WITH DATA.
+        console.log('Schema: ', this.characterSchema);
+        this.characterInfo.playername = this.characterSchema.playername;
+        this.characterInfo.name = this.characterSchema.character.name;
+        this.characterInfo.avatar = this.characterSchema.character.avatar;
+        retBoolVal = true;
+        console.log('Avatar: ' + this.characterInfo.avatar);
+      },
+      (err: HttpErrorResponse) => {
+        console.log('Error: ', err.message);
+        retBoolVal = false;
+      }
+    );
+    return retBoolVal;
+  }
+
+  /**
+   * @function getCharacterPath
+   * @param charname
+   * @description gets the correct path for the character to import
+   * @returns string
+   */
+  public getCharacterPath(charname: string): string {
+
+    const self = this;
+    let charPath: string;
+
+    _.forOwn(environment, (value: any, key: any) => {
+
+      if (value.JSONOBJECTPATH !== undefined) {
+        if (value.JSONOBJECTPATH === charname) {
+          charPath = value;
+        }
+      }
+
+    });
+    console.log('CHAR PATH: ' + charPath);
+    return charPath;
   }
 
 }

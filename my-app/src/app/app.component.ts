@@ -3,9 +3,9 @@ import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { environment } from '../environments/environment';
 import { CharAttributeService } from './char-attribute.service';
 import { NumberValueAccessor } from '@angular/forms';
+import { environment } from './../environments/environment';
 
 @Component({
   selector: 'my-app-root',
@@ -386,8 +386,13 @@ export class AppComponent implements OnInit, AfterViewInit {
     return retVal;
   }
 
-
-
+  /**
+   * @function generateSkillValue
+   * @description generates skill value by clicking a button
+   * @param e event
+   * @param skill string
+   * @param rank string
+   */
   public generateSkillValue(e: any, skill: string, rank: string): void {
 
     console.log('Event for Generating Skill Rank: ', e.target);
@@ -410,7 +415,6 @@ export class AppComponent implements OnInit, AfterViewInit {
    * @returns: nothing
    */
   public exportCharacter(event: any, charname: string): boolean {
-
 
     const charInfo = {
       name: charname,
@@ -525,8 +529,18 @@ export class AppComponent implements OnInit, AfterViewInit {
    */
   public importCharacter(event: any, charToImport: string): boolean {
     let retValBool = true;
+    let charpath: string;
 
-    retValBool = this.charAttributeService.importCharacter(charToImport);
+    charpath = this.charAttributeService.getCharacterPath(charToImport);
+
+    if (charpath || charpath !== undefined) {
+      retValBool = this.charAttributeService.importCharacter(charpath);
+    } else {
+      const msg = 'Character path to import does not exist!';
+      console.log(msg);
+      window.alert(msg);
+      retValBool = false;
+    }
 
     return retValBool;
   }
