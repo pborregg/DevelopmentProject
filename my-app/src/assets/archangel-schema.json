@@ -2,6 +2,8 @@
     "playername": "Peter Borreggine",
     "character": {
         "name": "Archangel",
+        "team": "XCITE",
+        "city": "Golden",
         "avatar": "archangel.png",
         "newname": "",
         "traits": [{

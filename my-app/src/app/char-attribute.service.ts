@@ -23,7 +23,7 @@ export class CharAttributeService {
     name: '',
     avatar: '',
     newname: ''
-  }
+  };
   public characterSchema: string[];
 
 

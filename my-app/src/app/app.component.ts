@@ -1,11 +1,15 @@
 // import { TrpgservicesService } from './trpgservices.service';
-import { AfterViewInit, Component, OnInit, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { CharAttributeService } from './char-attribute.service';
-import { NumberValueAccessor } from '@angular/forms';
 import { environment } from './../environments/environment';
+import { DataManager, ODataV4Adaptor, Query } from '@syncfusion/ej2-data';
+import { SessionStorageService } from 'angular-web-storage';
+import { FilteringEventArgs, MultiSelectComponent } from '@syncfusion/ej2-angular-dropdowns';
+import { EmitType } from '@syncfusion/ej2-base';
+import { NgSelectModule, NgOption } from '@ng-select/ng-select';
 
 @Component({
   selector: 'my-app-root',
@@ -13,6 +17,12 @@ import { environment } from './../environments/environment';
   styleUrls: ['./app.component.css', './app-component-custom.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('characterlist') multiObj: MultiSelectComponent;
+
+  public listofcharacters: string = null;
+  public formData: HTMLFormElement;
+  public NameObj: string[];
 
   public title = 'TRPG Testing App';
   public userName: string;
@@ -89,9 +99,48 @@ export class AppComponent implements OnInit, AfterViewInit {
   // generated Skill and Rank Numbers
   public genNumber: number;
   public genRnkNbr: number;
+  public allCharsObj: string[];
+  public totalcharacters: number;
+  public listOfCharacters: any;
+  public filtered: any;
+  public selected = [];
+
+  // bind the DataManager instance to dataSource property
+  // public data: DataManager = new DataManager({
+  //   url: '',
+  //   adaptor: new ODataV4Adaptor,
+  //   crossDomain: true
+  // });
+
+  // tslint:disable-next-line: ban-types
+  public data: { [key: string]: Object }[] = this.sessionStorageService.get('allCharacterList');
+  // maps the appropriate column to fields property
+  public fields = { text: 'FirstName', value: 'EmployeeID' };
+  // bind the Query instance to query property
+  public query = new Query().from('characterlist').select(['FirstName', 'City', 'EmployeeID']).take(6);
+  // set the placeholder to MultiSelect input
+  public text = 'Select an employee';
+  // sort the result items
+  public sorting = 'Ascending';
+  public box = 'box';
+  // placeholder
+  public placeholder = 'Choose a Character';
+  // width of popup
+  public popupHeight = 'auto';
+  // height of popup
+  public popupWidth = '450px';
+  // Filtering
+  public onFiltering: EmitType<FilteringEventArgs> = (e: FilteringEventArgs) => {
+    let query: Query = new Query();
+    // frame the query based on search string with filter type
+    query = (e.text !== '') ? query.where('charactername', 'startswth', e.text, true) : query;
+    // pass the filter data source, filter query to updateData method
+    e.updateData(this.data, query);
+  }
 
   constructor(
     private titleService: Title,
+    private sessionStorageService: SessionStorageService,
     private httpService: HttpClient,
     private charAttributeService: CharAttributeService,
     private modalService: BsModalService // ,
@@ -112,6 +161,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.expert = 4;
     this.master = 5;
     this.strengthfighting = 0;
+
   }
 
   // tslint:disable-next-line: typedef
@@ -126,18 +176,26 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.httpService.get(this.characterPath).subscribe(
       data => {
+
+        let characters = {};
         this.characterSchema = data as string[];	 // FILL THE ARRAY WITH DATA.
-        console.log('Schema: ', this.characterSchema);
-        this.userName = this.characterSchema.playername;
-        this.charName = this.characterSchema.character.name;
-        this.avatar = this.characterSchema.character.avatar;
+        this.sessionStorageService.set('currCharSchema', this.characterSchema);
+        characters = this.sessionStorageService.get('currCharSchema');
+        console.log('Schema: ', characters);
+
+        this.userName = characters.playername;
+        this.charName = characters.character.name;
+        this.avatar = characters.character.avatar;
 
         console.log('Avatar: ' + this.avatar);
+
       },
       (err: HttpErrorResponse) => {
         console.log('Error: ', err.message);
       }
     );
+
+    this.getAllCharacters();
 
     this.strength = 0;
     this.dexterity = 0;
@@ -168,6 +226,13 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     }, 3000);
 
+  }
+
+  // On Clear
+  public onClear(): void {
+    console.log('Selected item is removed', this.multiObj.value);
+    this.multiObj.value = null;
+    console.log('MultiSelect is: ', this.multiObj.value);
   }
 
   /**
@@ -553,5 +618,37 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.equipped = 'shield-red.jpg';
     }
   }
+
+  public getAllCharacters(): boolean {
+
+    let retAllCharsBool: boolean;
+
+    const endpoint = `${environment.ALLCHARACTERS.allcharpath}`;
+
+    this.httpService.get(endpoint).subscribe(
+      data => {
+        this.allCharsObj = data as string[];	 // FILL THE ARRAY WITH DATA.
+        console.log('Schema: ', this.allCharsObj);
+        this.totalcharacters = this.allCharsObj.length;
+        this.sessionStorageService.set('allCharactersList', this.allCharsObj);
+        retAllCharsBool = true;
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < this.allCharsObj.characters.length; i++) {
+          this.selected.push(this.allCharsObj.characters[i].name);
+        }
+      },
+      (err: HttpErrorResponse) => {
+        console.log('Error: ', err.message);
+        retAllCharsBool = false;
+      }
+    );
+    return retAllCharsBool;
+  }
+
+  public onChange(): void {
+    console.log('OnChange: ', this.selected);
+    this.filtered = this.selected.filter(t => t.name === this.selected);
+  }
+
 
 }

@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MultiSelectModule,
+    NgSelectModule
   ],
   providers: [
     Title,

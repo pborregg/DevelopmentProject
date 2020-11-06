@@ -8,6 +8,9 @@ export const environment = {
     valarian: './assets/valarian-schema.json',
     archangel: './assets/archangel-schema.json',
     joseph: './assets/joseph-schema.json',
+  },
+  ALLCHARACTERS: {
+    allcharpath: './assets/character-list.json'
   }
 };
 

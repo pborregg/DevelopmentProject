@@ -1,0 +1,24 @@
+{
+    "characters": [{
+            "id": 1,
+            "name": "Valarian",
+            "team": "XCITE",
+            "city": "Emerald",
+            "avatar": "valarian.png"
+        },
+        {
+            "id": 2,
+            "name": "Archangel",
+            "team": "XCITE",
+            "city": "Golden",
+            "avatar": "archangel.png"
+        },
+        {
+            "id": 3,
+            "name": "Joseph",
+            "team": "XCITE",
+            "city": "Platinum",
+            "avatar": "joseph.png"
+        }
+    ]
+}
