@@ -102,57 +102,57 @@
 
     <!-- Next Steps -->
     <h2>Next Steps</h2>
-    <p class="nextstepsinfo ">You can modify your character and its attributes</p>
-    <div class="clearfix ">&nbsp;</div>
+    <p class="nextstepsinfo">You can modify your character and its attributes</p>
+    <div class="clearfix">&nbsp;</div>
 
 
-    <div class="container attributes ">
-        <div class="row ">
-            <div class="col-md-6 ">
-                <div class="characterbaseattrs ">
+    <div class="container attributes">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="characterbaseattrs">
                     <h4>Character Base Attributes</h4>
                     <ul>
-                        <li>Strength<input name="strength " [(ngModel)]="strength " (blur)="calcCharComputedAttribs($event) " class="float-right attribinput " type="number " step="1 " min="1 " value="0 " max="5 " /></li>
-                        <li>Dexterity&nbsp;<input name="dexterity " [(ngModel)]="dexterity " (blur)="calcCharComputedAttribs($event) " class="float-right attribinput " type="number " step="1 " value="0 " min="1 " max="5 " /></li>
-                        <li>Mind&nbsp;<input name="mind " [(ngModel)]="mind " (blur)="calcCharComputedAttribs($event) " class="float-right attribinput " type="number " step="1 " value="0 " min="1 " max="5 " /></li>
-                        <li>Presence&nbsp;<input name="presence " [(ngModel)]="presence " (blur)="calcCharComputedAttribs($event) " class="float-right attribinput " type="number " step="1 " value="0 " min="1 " max="5 " /></li>
+                        <li>Strength<input name="strength" [(ngModel)]="strength" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" min="1" value="0" max="5" /></li>
+                        <li>Dexterity&nbsp;<input name="dexterity" [(ngModel)]="dexterity" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
+                        <li>Mind&nbsp;<input name="mind" [(ngModel)]="mind" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
+                        <li>Presence&nbsp;<input name="presence" [(ngModel)]="presence" (blur)="calcCharComputedAttribs($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="5" /></li>
                     </ul>
                     <h4>Damage You've Taken</h4>
                     <ul>
-                        <li>Damage&nbsp;<input name="damage " [(ngModel)]="damage " (blur)="setDamage($event) " class="float-right attribinput " type="number " step="1 " value="0 " min="1 " max="99 " /></li>
+                        <li>Damage&nbsp;<input name="damage" [(ngModel)]="damage" (blur)="setDamage($event)" class="float-right attribinput" type="number" step="1" value="0" min="1" max="99" /></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="charactercombatattrs ">
+            <div class="col-md-6">
+                <div class="charactercombatattrs">
                     <h4>Character Combat Attributes</h4>
                     <ul>
-                        <li>Vitality:&nbsp;<span class="float-right "><strong>{{vitality}}</strong></span></li>
-                        <li>Evasion:&nbsp;<span class="float-right "><strong>{{evasion}}</strong></span></li>
-                        <li>Armor:&nbsp;<span class="float-right "><strong>{{armor}}</strong></span></li>
-                        <li>Alacrity:&nbsp;<span class="float-right "><strong>{{alacrity}}</strong></span></li>
-                        <li>Tenacity:&nbsp;<span class="float-right "><strong>{{tenacity}}</strong></span></li>
-                        <li>Power:&nbsp;<span class="float-right "><strong>{{power}}</strong></span></li>
+                        <li>Vitality:&nbsp;<span class="float-right"><strong>{{vitality}}</strong></span></li>
+                        <li>Evasion:&nbsp;<span class="float-right"><strong>{{evasion}}</strong></span></li>
+                        <li>Armor:&nbsp;<span class="float-right"><strong>{{armor}}</strong></span></li>
+                        <li>Alacrity:&nbsp;<span class="float-right"><strong>{{alacrity}}</strong></span></li>
+                        <li>Tenacity:&nbsp;<span class="float-right"><strong>{{tenacity}}</strong></span></li>
+                        <li>Power:&nbsp;<span class="float-right"><strong>{{power}}</strong></span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="clearfix ">&nbsp;</div>
-    <div class="container attributes ">
-        <div class="row ">
-            <div class="col-md-6 ">
-                <div class="characterskillranks ">
+    <div class="clearfix">&nbsp;</div>
+    <div class="container attributes">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="characterskillranks">
                     <h4>Base Attribute Skills</h4>
                     <ul>
                         <li><strong>Strength</strong>
                             <ul>
                                 <li>Fighting:&nbsp;
-                                    <button id="btnStrFight " name="strengthFighting " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'strength', 'fighting') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnStrFight" name="strengthFighting" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'strength', 'fighting')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{strengthFightingRankvalue}}</strong>&nbsp;&nbsp;
                                     <strong>{{genRnkNbr}}</strong>&nbsp;&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;&nbsp;
-                                    <input name="strengthfighting " [(ngModel)]="strengthfighting " (blur)="checkSkillLevel($event, 'strength') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;&nbsp;
+                                    <input name="strengthfighting" [(ngModel)]="strengthfighting" (blur)="checkSkillLevel($event, 'strength')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                             </ul>
@@ -160,31 +160,31 @@
                         <li><strong>Dexterity</strong>
                             <ul>
                                 <li>Fighting&nbsp;
-                                    <button id="btnDexFight " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'dexterity', 'fighting') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnDexFight" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'dexterity', 'fighting')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{dexterityFightingRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="dexterityFighting " [(ngModel)]="dexterityFighting " (blur)="checkSkillLevel($event, 'dexterity') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="dexterityFighting" [(ngModel)]="dexterityFighting" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Stealth&nbsp;
-                                    <button id="btnDexStealth " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'dexterity', 'stealth') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnDexStealth" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'dexterity', 'stealth')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{dexterityStealthRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="dexterityStealth " [(ngModel)]="dexterityStealth " (blur)="checkSkillLevel($event, 'dexterity') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="dexterityStealth" [(ngModel)]="dexterityStealth" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Theivery&nbsp;
-                                    <button id="btnDexTheivery " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'dexterity', 'theivery') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnDexTheivery" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'dexterity', 'theivery')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{dexterityTheiveryRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="dexterityTheivery " [(ngModel)]="dexterityTheivery " (blur)="checkSkillLevel($event, 'dexterity') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="dexterityTheivery" [(ngModel)]="dexterityTheivery" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Archery&nbsp;
-                                    <button id="btnDexArchery " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'dexterity', 'archery') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnDexArchery" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'dexterity', 'archery')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{dexterityArcheryRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="dexterityTheivery " [(ngModel)]="dexterityArchery " (blur)="checkSkillLevel($event, 'dexterity') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="dexterityTheivery" [(ngModel)]="dexterityArchery" (blur)="checkSkillLevel($event, 'dexterity')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                             </ul>
@@ -192,36 +192,36 @@
                         <li><strong>Mind</strong>
                             <ul>
                                 <li>Apothecary&nbsp;
-                                    <button id="btnMindApothecary " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'mind', 'apothecary') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnMindApothecary" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'mind', 'apothecary')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{mindApothecaryRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="mindApothecary " [(ngModel)]="mindApothecary " (blur)="checkSkillLevel($event, 'mind') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="mindApothecary" [(ngModel)]="mindApothecary" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Learned&nbsp;<strong>{{mindLearnedRankvalue}}</strong>&nbsp;
-                                    <button id="btnMindLearned " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'mind', 'learned') ">Generate</button>&nbsp;&nbsp;&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="mindLearned " [(ngModel)]="mindLearned " (blur)="checkSkillLevel($event, 'mind') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <button id="btnMindLearned" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'mind', 'learned')">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="mindLearned" [(ngModel)]="mindLearned" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Perception&nbsp;<strong>{{mindPerceptionRankvalue}}</strong>&nbsp;
-                                    <button id="btnMindPerception " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'mind', 'perception') ">Generate</button>&nbsp;&nbsp;&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="mindPerception " [(ngModel)]="mindPerception " (blur)="checkSkillLevel($event, 'mind') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <button id="btnMindPerception" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'mind', 'perception')">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="mindPerception" [(ngModel)]="mindPerception" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Power&nbsp;
-                                    <button id="btnMindPower " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'mind', 'power') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnMindPower" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'mind', 'power')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{mindPowerRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="mindPower " [(ngModel)]="mindPower " (blur)="checkSkillLevel($event, 'mind') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="mindPower" [(ngModel)]="mindPower" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                 </span>
                                 </li>
                                 <li>Survival&nbsp;
-                                    <button id="btnMindSurvival " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'dexterity', 'survival') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnMindSurvival" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'dexterity', 'survival')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{mindSurvivalRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="mindSurvival " [(ngModel)]="mindSurvival " (blur)="checkSkillLevel($event, 'mind') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="mindSurvival" [(ngModel)]="mindSurvival" (blur)="checkSkillLevel($event, 'mind')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                             </ul>
@@ -229,38 +229,38 @@
                         <li><strong>Presence</strong>
                             <ul>
                                 <li>Insight&nbsp;
-                                    <button id="btnPresenceInsight " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'presence', 'insight') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnPresenceInsight" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'presence', 'insight')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{presenceInsightRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="presenceInsight " [(ngModel)]="presenceInsight " (blur)="checkSkillLevel($event, 'presence') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="presenceInsight" [(ngModel)]="presenceInsight" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Intimidation&nbsp;
-                                    <button id="btnPresenceIntimidation " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'presence', 'intimidation') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnPresenceIntimidation" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'presence', 'intimidation')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{presenceIntimidationRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="presenceIntimidation " [(ngModel)]="presenceIntimidation " (blur)="checkSkillLevel($event, 'presence') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="presenceIntimidation" [(ngModel)]="presenceIntimidation" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Manipulation&nbsp;
-                                    <button id="btnPresenceManipulation " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'presence', 'manipulation') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnPresenceManipulation" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'presence', 'manipulation')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{presenceManipulationRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="presenceManipulation " [(ngModel)]="presenceManipulation " (blur)="checkSkillLevel($event, 'presence') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="presenceManipulation" [(ngModel)]="presenceManipulation" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Performance&nbsp;
-                                    <button id="btnPresencePerformance " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'presence', 'performance') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnPresencePerformance" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'presence', 'performance')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{presencePerformanceRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="presencePerformance " [(ngModel)]="presencePerformance " (blur)="checkSkillLevel($event, 'presence') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="presencePerformance" [(ngModel)]="presencePerformance" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                                 <li>Power&nbsp;
-                                    <button id="btnPresencePower " type="button " class="btn btn-primary btnxsmall " (click)="generateSkillValue($event, 'presence', 'power') ">Generate</button>&nbsp;&nbsp;&nbsp;
+                                    <button id="btnPresencePower" type="button" class="btn btn-primary btnxsmall" (click)="generateSkillValue($event, 'presence', 'power')">Generate</button>&nbsp;&nbsp;&nbsp;
                                     <strong>{{presencePowerRankvalue}}</strong>&nbsp;
-                                    <span class="float-right ">Rank:&nbsp;
-                                    <input name="presencePower " [(ngModel)]="presencePower " (blur)="checkSkillLevel($event, 'presence') " class="float-right attribinput " type="number " step="1 " min="0 " value="0 " max="5 " />
+                                    <span class="float-right">Rank:&nbsp;
+                                    <input name="presencePower" [(ngModel)]="presencePower" (blur)="checkSkillLevel($event, 'presence')" class="float-right attribinput" type="number" step="1" min="0" value="0" max="5" />
                                   </span>
                                 </li>
                             </ul>
@@ -268,50 +268,50 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="baseattribskills ">
+            <div class="col-md-6">
+                <div class="baseattribskills">
                     <h4>Character Skill Ranking Scale</h4>
                     <ul>
-                        <li>Untrained:&nbsp;<span class="float-right "><strong>{{untrained}}</strong></span></li>
-                        <li>Novice:&nbsp;<span class="float-right "><strong>{{novice}}</strong></span></li>
-                        <li>Apprentice:&nbsp;<span class="float-right "><strong>{{apprentice}}</strong></span></li>
-                        <li>Adept:&nbsp;<span class="float-right "><strong>{{adept}}</strong></span></li>
-                        <li>Expert:&nbsp;<span class="float-right "><strong>{{expert}}</strong></span></li>
-                        <li>Master:&nbsp;<span class="float-right "><strong>{{master}}</strong></span></li>
+                        <li>Untrained:&nbsp;<span class="float-right"><strong>{{untrained}}</strong></span></li>
+                        <li>Novice:&nbsp;<span class="float-right"><strong>{{novice}}</strong></span></li>
+                        <li>Apprentice:&nbsp;<span class="float-right"><strong>{{apprentice}}</strong></span></li>
+                        <li>Adept:&nbsp;<span class="float-right"><strong>{{adept}}</strong></span></li>
+                        <li>Expert:&nbsp;<span class="float-right"><strong>{{expert}}</strong></span></li>
+                        <li>Master:&nbsp;<span class="float-right"><strong>{{master}}</strong></span></li>
                     </ul>
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-md-6">
                     <h4>Armor</h4>
                     <div>Choose Chest Armor</div>
-                    <div class="row ">
-                        <div class="col-md-7 ">
-                            <div class="btn-group btn-group-toggle ">
-                                <label class="btn btn-primary btn-sm ">
-                                   <input type="radio " name="armor " id="yes " autocomplete="off " (click)="armorEquipped($event) "> Yes
-                                </label>
-                                <label class="btn btn-secondary btn-sm ">
-                                    <input type="radio " name="armor " id="no " autocomplete="off " (click)="armorEquipped($event) "> No
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="btn-group btn-group-toggle">
+                                <label class="btn btn-primary btn-sm">
+                                   <input type="radio" name="armor" id="yes" autocomplete="off" (click)="armorEquipped($event)">Yes
+                                  </label>
+                                <label class="btn btn-secondary btn-sm">
+                                    <input type="radio" name="armor" id="no" autocomplete="off" (click)="armorEquipped($event)">No
                                 </label>
                             </div>
                         </div>
-                        <div class="col-md-5 ">
-                            <img src="./assets/images/{{equipped}} " class="shieldarmor " alt=" " title="{{armor}} " />
+                        <div class="col-md-5">
+                            <img src="./assets/images/{{equipped}}" class="shieldarmor" alt="" title="{{armor}}" />
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-md-6">
                     <h4>Weapons</h4>
                     <div>Choose Attack Skill</div>
-                    <div class="btn-group btn-group-toggle ">
-                        <label class="btn btn-primary btn-sm ">
-                          <input type="radio " name="weapons " id="option1 " autocomplete="off "> Strength
+                    <div class="btn-group btn-group-toggle">
+                        <label class="btn btn-primary btn-sm">
+                          <input type="radio" name="weapons" id="option1" autocomplete="off"> Strength
                         </label>
-                        <label class="btn btn-secondary btn-sm ">
-                          <input type="radio " name="weapons " id="option2 " autocomplete="off "> Dexterity
+                        <label class="btn btn-secondary btn-sm">
+                          <input type="radio" name="weapons" id="option2" autocomplete="off"> Dexterity
                         </label>
                     </div>
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-md-6">
                     <h4>Traits</h4>
                     <div>Value...</div>
                 </div>
@@ -319,23 +319,23 @@
         </div>
 
         <ng-template #template>
-            <div class="modal-header ">
-                <h4 class="modal-title pull-left ">Change Your Character's Name</h4>
-                <button type="button " class="close pull-right " aria-label="Close " (click)="modalRef.hide() ">
-                <span aria-hidden="true ">&times;</span>
+            <div class="modal-header">
+                <h4 class="modal-title pull-left">Change Your Character's Name</h4>
+                <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <div class="modal-body ">
-                <form id="charname " novalidate>
-                    <label for="newcharname ">Enter a new Name for your Character</label><br>
-                    <input id="newcharname " type="text " title="Enter a new name for your Character " (blur)="changeCharName($event) " />
-                    <div class="clearfix ">&nbsp;</div>
-                    <div class="row ">
-                        <div class="col-md-6 ">
-                            <button id="btnSubmit " type="submit " class="btn btn-primary btn-sm ">Submit</button>
+            <div class="modal-body">
+                <form id="charname" novalidate>
+                    <label for="newcharname">Enter a new Name for your Character</label><br>
+                    <input id="newcharname" type="text" title="Enter a new name for your Character" (blur)="changeCharName($event)" />
+                    <div class="clearfix">&nbsp;</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button id="btnSubmit" type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </div>
-                        <div class="col-md-6 ">
-                            <button id="btnReset " type="reset " class="btn btn-primary btn-sm ">Clear</button>
+                        <div class="col-md-6">
+                            <button id="btnReset" type="reset" class="btn btn-primary btn-sm">Clear</button>
                         </div>
                     </div>
                 </form>
@@ -344,10 +344,10 @@
 
         <ng-template #modalPlayerSelect>
             <div class="modal-content">
-                <div class="modal-header ">
-                    <h4 class="modal-title pull-left ">Import a Character</h4>
-                    <button type="button " class="close pull-right " aria-label="Close " (click)="modalRef.hide() ">
-                        <span aria-hidden="true ">&times;</span>
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Import a Character</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body modal-body-adjust">
