@@ -263,12 +263,16 @@ export class AppComponent implements OnInit, AfterViewInit {
    * @param: event
    * @returns: nothing
    */
-  public changeCharName(event): void {
-    const msg = (document.getElementById('newcharname') as HTMLInputElement).value;
+  public changeCharName(event: any): void {
+    const msg = event.target.value;
     console.log('New Character Name: ' + msg);
     this.newCharName = msg;
     if (this.newCharName === 'Joseph') {
       this.avatar = 'joseph.png';
+    } else if (this.newCharName === 'Archangel') {
+      this.avatar = 'archangel.png';
+    } else if (this.newCharName === 'Valarian') {
+      this.avatar = 'valarian.png';
     } else {
       this.avatar = this.characterSchema.character.avatar;
     }
@@ -636,6 +640,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         for (let i = 0; i < this.allCharsObj.characters.length; i++) {
           this.selected.push(this.allCharsObj.characters[i].name);
         }
+        this.sessionStorageService.set('allCharsOnly', this.selected);
       },
       (err: HttpErrorResponse) => {
         console.log('Error: ', err.message);
