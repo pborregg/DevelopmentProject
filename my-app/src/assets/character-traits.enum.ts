@@ -1,10 +1,10 @@
 export interface TraitRequirements {
-  anxious: CharacterTraitTypes.ANXIOUS,
+  anxious: CharacterTraitTypes.ANXIOUS;
   anxioustraitsvalues: {
-    strength: CharacterTraitRequirementValues.ANXIOUS_STRENGTH,
-    dexterity: CharacterTraitRequirementValues.ANXIOUS_DEXTERITY,
-    mind: CharacterTraitRequirementValues.ANXIOUS_MIND,
-    presence: CharacterTraitRequirementValues.ANXIOUS_PRESENCE
+    strength: CharacterTraitRequirementValues.ANXIOUS_STRENGTH;
+    dexterity: CharacterTraitRequirementValues.ANXIOUS_DEXTERITY;
+    mind: CharacterTraitRequirementValues.ANXIOUS_MIND;
+    presence: CharacterTraitRequirementValues.ANXIOUS_PRESENCE;
   }
 
 }
@@ -39,5 +39,9 @@ export enum CharacterTraitRequirementValues {
   ANXIOUS_STRENGTH = 1,
   ANXIOUS_DEXTERITY = 2,
   ANXIOUS_MIND = 1,
-  ANXIOUS_PRESENCE = 1
+  ANXIOUS_PRESENCE = 1,
+  ARACHNOPHOBIA_STRENGTH = 3,
+  ARACHNOPHOBIA_DEXTERITY = 4,
+  ATHLETIC_STRENGTH = 5,
+  ATHLETIC_DEXTERITY = 2
 }

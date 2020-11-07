@@ -101,9 +101,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   public genRnkNbr: number;
   public allCharsObj: string[];
   public totalcharacters: number;
-  public listOfCharacters: any;
+  public listOfCharacters = [];
   public filtered: any;
-  public selected = [];
+  public selected: any[] = [];
+  public selectedCharacter: string;
 
   // bind the DataManager instance to dataSource property
   // public data: DataManager = new DataManager({
@@ -626,33 +627,42 @@ export class AppComponent implements OnInit, AfterViewInit {
   public getAllCharacters(): boolean {
 
     let retAllCharsBool: boolean;
-
     const endpoint = `${environment.ALLCHARACTERS.allcharpath}`;
 
-    this.httpService.get(endpoint).subscribe(
-      data => {
-        this.allCharsObj = data as string[];	 // FILL THE ARRAY WITH DATA.
-        console.log('Schema: ', this.allCharsObj);
-        this.totalcharacters = this.allCharsObj.length;
-        this.sessionStorageService.set('allCharactersList', this.allCharsObj);
-        retAllCharsBool = true;
-        // tslint:disable-next-line: prefer-for-of
-        for (let i = 0; i < this.allCharsObj.characters.length; i++) {
-          this.selected.push(this.allCharsObj.characters[i].name);
+    if (this.selected.length === 0) {
+      this.httpService.get(endpoint).subscribe(
+        data => {
+          this.allCharsObj = data as string[];	 // FILL THE ARRAY WITH DATA.
+          console.log('Schema: ', this.allCharsObj);
+          this.totalcharacters = this.allCharsObj.characters.length;
+          this.sessionStorageService.set('allCharactersList', this.allCharsObj.characters);
+          retAllCharsBool = true;
+          // tslint:disable-next-line: prefer-for-of
+          for (let i = 0; i < this.allCharsObj.characters.length; i++) {
+            if (this.allCharsObj.characters[i].name !== this.charName) {
+              this.listOfCharacters.push(this.allCharsObj.characters[i].name);
+            }
+          }
+          this.selected = this.listOfCharacters;
+          this.sessionStorageService.set('allCharsOnly', this.listOfCharacters);
+          console.log('Characters: ', this.selected);
+        },
+        (err: HttpErrorResponse) => {
+          console.log('Error: ', err.message);
+          retAllCharsBool = false;
         }
-        this.sessionStorageService.set('allCharsOnly', this.selected);
-      },
-      (err: HttpErrorResponse) => {
-        console.log('Error: ', err.message);
-        retAllCharsBool = false;
-      }
-    );
-    return retAllCharsBool;
+      );
+      // We've done this once... just get the data.
+      this.selected = this.sessionStorageService.get('allCharsOnly');
+      return retAllCharsBool;
+    }
+    return true;
   }
 
   public onChange(): void {
-    console.log('OnChange: ', this.selected);
-    this.filtered = this.selected.filter(t => t.name === this.selected);
+    console.log('OnChange: ', this.selectedCharacter);
+    console.log('this.selected: ', this.selected);
+    // this.filtered = this.selected.filter(t => t.name === this.selected);
   }
 
 

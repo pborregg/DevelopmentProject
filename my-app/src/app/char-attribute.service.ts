@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import * as _ from 'lodash';
 import { environment } from './../environments/environment';
+// import { TraitRequirements } from '../assets/character-traits.enum';
 
 // import { BaseInformation,
 // BaseTraits,
@@ -25,18 +26,12 @@ export class CharAttributeService {
     newname: ''
   };
   public characterSchema: string[];
+  public traitLevel: number;
 
 
   constructor(
-    private httpService: HttpClient
-    // private baseInformation: BaseInformation,
-    // private baseTraits: BaseTraits,
-    // private baseAttributes: BaseAttributes,
-    // private strength: Strength,
-    // private dexterity: Dexterity,
-    // private mind: Mind,
-    // private presence: Presence,
-    // private charCombatAttributes: CharacterCombatAttributes
+    private httpService: HttpClient // ,
+    // protected readonly traitRequirements: TraitRequirements
   ) { }
 
   // tslint:disable-next-line: typedef
@@ -228,5 +223,20 @@ export class CharAttributeService {
     console.log('CHAR PATH: ' + charPath);
     return charPath;
   }
+
+  /**
+   *
+   */
+  public setTrait(trait: string): void {
+    if (trait === 'ANXIOUS') {
+      this.traitLevel = 1;
+      // this.traitLevel = this.traitRequirements.anxioustraitsvalues.strength;
+    }
+  }
+
+  public getTrait(): number {
+    return this.traitLevel;
+  }
+
 
 }

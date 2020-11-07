@@ -351,10 +351,8 @@
                     </button>
                 </div>
                 <div class="modal-body modal-body-adjust">
-                    <select [(ngModel)]="selected" name="charList" placeholder='Select One...' (ngModelChange)="onChange()">
-                        <option value="select" selected>Select One...</option>
-                        <option *ngFor="let character of selected" [ngValue]="character">{{character}}</option>
-                    </select>
+                    <ng-select [(ngModel)]="selectedCharacter" [multiple]="false" [ngClass]="ng-select" bindLabel="label" [items]="listOfCharacters" placeholder="Select One..." (ngModelChange)="onChange()">
+                    </ng-select>
                     <!-- <ejs-multiselect #characterlist name='listofcharacters' id='multiselectelement' [dataSource]='data' [(ngModel)]='listofcharacters' [fields]='fields' [mode]='box' [sortOrder]='sorting' (removed)='onClear()' [placeholder]='text' [query]='query' required
                         [ngModelOptions]='{standalone: true}' [popupHeight]='popupHeight' [popupWidth]='popupWidth' [placeholder]='placeholder' [headerTemplate]='headerTemplate' [footerTemplate]='footerTemplate' [allowCustomValue]=false (filtering)='onFiltering($event)'
                         [allowFiltering]=true (blur)='onChange($event)'>
@@ -370,7 +368,7 @@
                     </ejs-multiselect> -->
                 </div>
                 <div class="modal-footer">
-                    <span>&nbsp;</span>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="importNewCharacter()"></button>
                 </div>
             </div>
         </ng-template>
