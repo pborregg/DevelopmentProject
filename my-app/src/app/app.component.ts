@@ -665,5 +665,8 @@ export class AppComponent implements OnInit, AfterViewInit {
     // this.filtered = this.selected.filter(t => t.name === this.selected);
   }
 
+  public importNewCharacter(): boolean {
+    return true;
+  }
 
 }
