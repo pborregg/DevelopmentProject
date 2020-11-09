@@ -2,7 +2,8 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import * as _ from 'lodash';
 import { environment } from './../environments/environment';
-// import { TraitRequirements } from '../assets/character-traits.enum';
+import { TraitRequirements } from './interfaces/char-information-interface';
+import { CharacterTraitRequirementValues, CharacterTraitTypes } from 'src/assets/character-traits.enum';
 
 // import { BaseInformation,
 // BaseTraits,
@@ -28,11 +29,11 @@ export class CharAttributeService {
   public characterSchema: string[];
   public traitLevel: number;
 
-
   constructor(
-    private httpService: HttpClient // ,
-    // protected readonly traitRequirements: TraitRequirements
-  ) { }
+    private httpService: HttpClient
+  ) {
+    this.traitRequirements = this.traitRequirements.bind(this);
+  }
 
   // tslint:disable-next-line: typedef
   public attributeServiceNode(attribname: string, attribnbr: number): number {
@@ -238,5 +239,21 @@ export class CharAttributeService {
     return this.traitLevel;
   }
 
+  public traitRequirements(): TraitRequirements {
+    const traitTypes = CharacterTraitTypes;
+    const traitReqValues = CharacterTraitRequirementValues;
+    console.log('Trait Reqs: ', traitTypes);
+    console.log('Trait Reqs: ', traitReqValues);
+    return undefined;
+  }
+
+  public setTraitRequirement(trainreq: number): void {
+
+  }
+
+  public getTraitRequirement(): number {
+
+    return 0;
+  }
 
 }

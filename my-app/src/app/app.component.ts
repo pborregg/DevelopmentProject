@@ -467,6 +467,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     console.log('Event for Generating Skill Rank: ', e.target);
 
+
+
     if (skill === 'strength') {
 
       this.genNumber = this.charAttributeService.generateSkillValue(this.strength);
@@ -583,7 +585,7 @@ export class AppComponent implements OnInit, AfterViewInit {
           }
         }
       }
-    }
+    };
 
 
     return this.charAttributeService.exportCharacter(charInfo);
@@ -615,13 +617,78 @@ export class AppComponent implements OnInit, AfterViewInit {
     return retValBool;
   }
 
+  /**
+   * @function armorEquipped
+   * @description equips a character with armor
+   * @param event ANY
+   * @returns nothing
+   */
   public armorEquipped(event: any): void {
+
     console.log('Event Armor Equipped: ', event.target.id);
+
+    const btnArmorYes = document.body.querySelector('#btnArmorYes') as HTMLElement;
+    const btnArmorNo = document.body.querySelector('#btnArmorNo') as HTMLElement;
+
     if (event.target.id === 'yes') {
       this.equipped = 'shield-green.jpg';
-    } else {
+      btnArmorYes.classList.remove('btn-secondary');
+      btnArmorYes.classList.add('btn-primary');
+      btnArmorNo.classList.remove('btn-primary');
+      btnArmorNo.classList.add('btn-secondary');
+    } else if (event.target.id === 'no') {
       this.equipped = 'shield-red.jpg';
+      btnArmorYes.classList.remove('btn-primary');
+      btnArmorYes.classList.add('btn-secondary');
+      btnArmorNo.classList.remove('btn-secondary');
+      btnArmorNo.classList.add('btn-primary');
+    } else {
+      this.equipped = 'shield-gray.jpg';
+      btnArmorNo.classList.remove('btn-primary');
+      btnArmorNo.classList.add('btn-secondary');
+      btnArmorYes.classList.remove('btn-primary');
+      btnArmorYes.classList.add('btn-secondary');
     }
+  }
+
+  /**
+   * @function attackSkill
+   * @description Sets an attack skill based on Strength or Dexterity
+   * @param event ANY
+   * @returns nothing
+   */
+  public attackSkill(event: any): void {
+    console.log('Event Attack Skill: ', event.target.id);
+
+    const btnWeaponsYes = document.body.querySelector('#btnWeaponsYes') as HTMLElement;
+    const btnWeaponsNo = document.body.querySelector('#btnWeaponsNo') as HTMLElement;
+    const btnWeaponsNone = document.body.querySelector('#btnWeaponsNone') as HTMLElement;
+
+
+    if (event.target.id === 'strength') {
+      btnWeaponsYes.classList.remove('btn-secondary');
+      btnWeaponsYes.classList.add('btn-primary');
+      btnWeaponsNo.classList.remove('btn-primary');
+      btnWeaponsNo.classList.add('btn-secondary');
+      btnWeaponsNone.classList.remove('btn-primary');
+      btnWeaponsNone.classList.add('btn-secondary');
+    } else if (event.target.id === 'dexterity') {
+      btnWeaponsYes.classList.remove('btn-primary');
+      btnWeaponsYes.classList.add('btn-secondary');
+      btnWeaponsNo.classList.remove('btn-secondary');
+      btnWeaponsNo.classList.add('btn-primary');
+      btnWeaponsNone.classList.remove('btn-primary');
+      btnWeaponsNone.classList.add('btn-secondary');
+    } else {
+      btnWeaponsNo.classList.remove('btn-primary');
+      btnWeaponsNo.classList.add('btn-secondary');
+      btnWeaponsYes.classList.remove('btn-primary');
+      btnWeaponsYes.classList.add('btn-secondary');
+      btnWeaponsNone.classList.remove('btn-secondary');
+      btnWeaponsNone.classList.add('btn-primary');
+
+    }
+
   }
 
   public getAllCharacters(): boolean {
