@@ -1,18 +1,29 @@
 {
     "name": "TRPGApplication",
-    "version": "0.0.0",
+    "version": "3.0.0",
+    "sideEffects": false,
+    "license": "MIT",
     "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
+        "add-version": "cross-var replace '@VERSION@' $npm_package_version dist/main.js",
+        "build-stats": "ng build --stats.json",
+        "bundle-report": "webpack-bundle-analyzer dist/stats.json",
+        "build": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng build --aot --optimization=true --vendor-chunk=true --source-map=false",
+        "build-docker": "npm run build --configuration=prod && cross-var docker build . -t $npm_package_name:$npm_package_version",
+        "package": "cat dist/* | gzip > build/chunk.js.gz",
+        "start-prod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --optimization=true --source-map --aot --vendor-chunk=true",
+        "test-prod": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --prod=true --source-map=false --watch=false --optimization=true --hmr=false --liveReload=false --aot=true --vendor-chunk=true",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "start": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --source-map",
+        "dist": "ng build --aot; node server.js"
     },
     "private": true,
     "dependencies": {
+        "@agm/core": "^3.0.0-beta.0",
+        "@angular/cdk": "~10.2.0",
         "@angular/animations": "~11.0.0-rc.1",
-        "@angular/common": "~11.0.0-rc.1",
+        "@angular/common": "^11.0.0-rc.2",
         "@angular/compiler": "~11.0.0-rc.1",
         "@angular/core": "~11.0.0-rc.1",
         "@angular/forms": "~11.0.0-rc.1",
@@ -31,16 +42,19 @@
         "jquery": "^3.5.1",
         "lodash": "^4.17.20",
         "ngx-bootstrap": "^6.1.0",
-        "npm-check-updates": "^9.2.3",
+        "node-sass": "^4.9.0",
+        "npm-check-updates": "^9.0.2",
         "rxjs": "~6.6.3",
+        "rxjs-compat": "^6.3.1",
         "tslib": "^2.0.3",
-        "zone.js": "~0.11.2"
+        "typescript": "^4.0.5",
+        "zone.js": "~0.11.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.1100.0-rc.1",
         "@angular/cli": "~11.0.0-rc.1",
         "@angular/compiler-cli": "~11.0.0-rc.1",
-        "@types/jasmine": "~3.6.0",
+        "@types/jasmine": "~3.6.1",
         "@types/node": "^14.14.6",
         "codelyzer": "^6.0.1",
         "jasmine-core": "~3.6.0",
@@ -50,9 +64,13 @@
         "karma-coverage": "~2.0.3",
         "karma-jasmine": "~4.0.1",
         "karma-jasmine-html-reporter": "^1.5.4",
+        "pre-commit": "^1.2.2",
         "protractor": "~7.0.0",
         "ts-node": "~9.0.0",
         "tslint": "~6.1.0",
-        "typescript": "~4.0.5"
-    }
+        "webpack-bundle-analyzer": "^2.13.1"
+    },
+    "pre-commit": [
+        "lint"
+    ]
 }
