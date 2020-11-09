@@ -29,10 +29,19 @@ export class CharAttributeService {
   public characterSchema: string[];
   public traitLevel: number;
 
+  public traitInterface: TraitRequirements[];
+  public traitTypes: typeof CharacterTraitTypes;
+  public traitReqValues: typeof CharacterTraitRequirementValues;
+
   constructor(
     private httpService: HttpClient
   ) {
     this.traitRequirements = this.traitRequirements.bind(this);
+    this.oninitbegin();
+  }
+
+  public oninitbegin(): void {
+    this.traitRequirements();
   }
 
   // tslint:disable-next-line: typedef
@@ -239,12 +248,12 @@ export class CharAttributeService {
     return this.traitLevel;
   }
 
-  public traitRequirements(): TraitRequirements {
-    const traitTypes = CharacterTraitTypes;
-    const traitReqValues = CharacterTraitRequirementValues;
-    console.log('Trait Reqs: ', traitTypes);
-    console.log('Trait Reqs: ', traitReqValues);
-    return undefined;
+  public traitRequirements(): void {
+    this.traitTypes = CharacterTraitTypes;
+    this.traitReqValues = CharacterTraitRequirementValues;
+    console.log('Trait Reqs: ', this.traitTypes);
+    console.log('Trait Reqs: ', this.traitReqValues);
+    console.log('Trait Requirements: ');
   }
 
   public setTraitRequirement(trainreq: number): void {
