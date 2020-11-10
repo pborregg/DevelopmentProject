@@ -101,7 +101,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public genRnkNbr: number;
   public allCharsObj: string[];
   public totalcharacters: number;
-  public listOfCharacters = [];
+    public listOfCharacters: any[] = [];
   public filtered: any;
   public selected: any[] = [];
   public selectedCharacter: string;
